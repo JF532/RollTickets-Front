@@ -1,59 +1,54 @@
 import { useState } from "react";
-import API from "@Controllers/api";
+import { criarUsuario } from "../../Controllers/api";
 
-export default function useForm(defaultObject = {}){
+function UserForm() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    cpf: "",
+    telefone: ""
+  });
 
-    const [data,setData] = useState({});
-    const [error,setError] = useState({});
-    const[processing,setProcessing] = useState(false);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const set = (key, value) => {
-        setData({...data,[key]:value});
+    try {
+      const response = await criarUsuario(formData);
+      console.log("Usuário criado:", response.data);
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
     }
+  };
 
-    const submit = async (method,url,options) => {
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>Nome:</label>
+      <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />
 
-        setProcessing(true);
-        setError({});
+      <label>Email:</label>
+      <input type="email" name="email" value={formData.email} onChange={handleChange} required />
 
-        try{
-            const response = await API ({
+      <label>Senha:</label>
+      <input type="password" name="senha" value={formData.senha} onChange={handleChange} required />
 
-                method,
-                url,
-                data : data,
-                ... options
+      <label>CPF:</label>
+      <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} required />
 
-            });
+      <label>Telefone:</label>
+      <input type="text" name="telefone" value={formData.telefone} onChange={handleChange} required />
 
-            return response;
-        } catch (error){
-
-            if(error.response && error.response.data && error.response.data.message){
-                setError(error.response.data.message);
-            }else {
-                setError({message: "Ocorreu um erro inesperado"});
-            }
-
-        }finally {
-
-            setProcessing(false);
-        }
-
-    }
-
-    return {
-        data,
-        setData: set,
-        error,
-        processing,
-        post: (url,options) => submit("POST", url, options),
-        get: (url,options) => submit("GET", url, options),
-        put: (url,options) => submit("PUT", url, options),
-        patch: (url,options) => submit("PATCH", url, options),
-        delete: (url,options) => submit("DELETE", url, options),
-
-    }
-
+      <button type="submit">Cadastrar</button>
+    </form>
+  );
 }
+
+export default UserForm;
