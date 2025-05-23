@@ -20,7 +20,15 @@ function Home() {
     <div className='w-screen h-screen'>
       {/* <AppNavbar/> */}
 
-      <nav className='flex w-full h-20 bg-purple-800 fixed items-center px-6 justify-between text-white'>
+      <nav className='flex w-full h-20 bg-[#81318a] fixed items-center px-6 justify-between text-white'>
+
+        <ul className='flex items-center gap-3'>
+          <li> <IoTicketOutline className="text-white text-4xl" /> </li>
+          <li className='  p-2 rounded-lg'><a className='hover:text-black' href="/cadastro" > Home </a></li>
+          <li className='  p-2 rounded-lg'>Filmes</li>
+          <li className='  p-2 rounded-lg border-white'>Horario</li>
+        </ul>
+
 
         <ul className='flex items-center gap-3'>
           <li> <IoTicketOutline className="text-white text-4xl"/> </li>
@@ -28,6 +36,7 @@ function Home() {
           <li className='border-2 border-solid p-2 rounded-lg'>Filmes</li>
           <li className='border-2 border-solid p-2 rounded-lg border-black'>Horarido</li>
         </ul>
+
 
 
         <ul className='flex items-center gap-6'>
@@ -44,13 +53,17 @@ function Home() {
             />
           </div>
 
+
           <li><CgProfile className="text-white text-4xl"/></li>
+
         </ul>
 
       </nav>
 
 
-      <div className='w-full h-full bg-gray-900 flex flex-col justify-center items-center'>
+
+      <div className='w-full h-full bg-gray-900 flex justify-center items-center'>
+
 
         <div>
           <Swiper
@@ -63,11 +76,12 @@ function Home() {
               stretch: 0,
               depth: 1000,
               modifier: 1,
-              slideShadows: true,
+              slideShadows: false,
             }}
             pagination={{ clickable: true }}
-            modules={[EffectCoverflow, Pagination]}
-            className="meu-swiper"
+
+            className="mySwiper"
+
           >
             <SwiperSlide><img className='swiper-image' src={teste} alt="Filme 1" /></SwiperSlide>
             <SwiperSlide><img className='swiper-image' src={teste1} alt="Filme 2" /></SwiperSlide>
@@ -76,7 +90,7 @@ function Home() {
 
           </Swiper>
         </div>
-
+        -
 
       </div>
 

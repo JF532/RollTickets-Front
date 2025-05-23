@@ -1,24 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
 @import 'flowbite';
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a:hover {
-  color: #78f253;
-}
+
 
 .swiper-image {
   width: 700px; 
@@ -41,31 +35,18 @@ button {
   transition: border-color 0.25s;
 }
 */
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+
 
  
-.mySwiper {
-  width: 100%;
-  padding-bottom: 40px; /* Espaço extra para a paginação aparecer */
-  position: relative; /* Para a paginação posicionar certo */
-}
 
 .swiper-pagination {
   position: absolute !important;
   text-align: center;
-  width: 100%;
+  width: 50%;
   bottom: 10px !important;
   left: 0;
 }
 
 
-}
+
