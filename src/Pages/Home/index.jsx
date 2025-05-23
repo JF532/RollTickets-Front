@@ -30,14 +30,6 @@ function Home() {
         </ul>
 
 
-        <ul className='flex items-center gap-3'>
-          <li> <IoTicketOutline className="text-white text-4xl"/> </li>
-          <li className='border-2 border-solid p-2 rounded-lg'><a href="/cadastro" > Home </a></li>
-          <li className='border-2 border-solid p-2 rounded-lg'>Filmes</li>
-          <li className='border-2 border-solid p-2 rounded-lg border-black'>Horarido</li>
-        </ul>
-
-
 
         <ul className='flex items-center gap-6'>
 
@@ -49,12 +41,12 @@ function Home() {
             <input
               type="search"
               className="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 text-black"
-              placeholder="Pesquisar Filme"
+              placeholder="Pesquisar filme"
             />
           </div>
 
 
-          <li><CgProfile className="text-white text-4xl"/></li>
+          <li><CgProfile className="text-white text-4xl" /></li>
 
         </ul>
 
