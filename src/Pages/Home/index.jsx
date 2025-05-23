@@ -14,6 +14,7 @@ import { IoSearch } from 'react-icons/io5';
 import { IoTicketOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 
+
 function Home() {
   return (
     <div className='w-screen h-screen'>
@@ -26,6 +27,14 @@ function Home() {
           <li className='  p-2 rounded-lg'><a className='hover:text-black' href="/cadastro" > Home </a></li>
           <li className='  p-2 rounded-lg'>Filmes</li>
           <li className='  p-2 rounded-lg border-white'>Horario</li>
+        </ul>
+
+
+        <ul className='flex items-center gap-3'>
+          <li> <IoTicketOutline className="text-white text-4xl"/> </li>
+          <li className='border-2 border-solid p-2 rounded-lg'><a href="/cadastro" > Home </a></li>
+          <li className='border-2 border-solid p-2 rounded-lg'>Filmes</li>
+          <li className='border-2 border-solid p-2 rounded-lg border-black'>Horarido</li>
         </ul>
 
 
@@ -44,13 +53,17 @@ function Home() {
             />
           </div>
 
-          <li><CgProfile className="text-white text-4xl" /></li>
+
+          <li><CgProfile className="text-white text-4xl"/></li>
+
         </ul>
 
       </nav>
 
 
+
       <div className='w-full h-full bg-gray-900 flex justify-center items-center'>
+
 
         <div>
           <Swiper
@@ -66,8 +79,9 @@ function Home() {
               slideShadows: false,
             }}
             pagination={{ clickable: true }}
-            modules={[EffectCoverflow, Pagination]}
+
             className="mySwiper"
+
           >
             <SwiperSlide><img className='swiper-image' src={teste} alt="Filme 1" /></SwiperSlide>
             <SwiperSlide><img className='swiper-image' src={teste1} alt="Filme 2" /></SwiperSlide>
