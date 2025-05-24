@@ -59,21 +59,21 @@ function Home() {
 
         <div>
           <Swiper
+            modules={[EffectCoverflow, Pagination]} 
             effect="coverflow"
             grabCursor={true}
             centeredSlides={true}
             slidesPerView="auto"
+
             coverflowEffect={{
               rotate: 30,
               stretch: 0,
-              depth: 1000,
+              depth: 2000,
               modifier: 1,
               slideShadows: false,
             }}
             pagination={{ clickable: true }}
-
             className="mySwiper"
-
           >
             <SwiperSlide><img className='swiper-image' src={teste} alt="Filme 1" /></SwiperSlide>
             <SwiperSlide><img className='swiper-image' src={teste1} alt="Filme 2" /></SwiperSlide>
