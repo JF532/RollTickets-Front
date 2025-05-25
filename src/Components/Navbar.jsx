@@ -18,7 +18,11 @@ export default function Navbar() {
               Home{" "}
             </a>
           </li>
-          <li className="  p-2 rounded-lg">Filmes</li>
+          <li className="  p-2 rounded-lg"><a className="hover:text-black" href="/filmes">
+              {" "}
+              Filmes e Horários{" "}
+            </a></li>
+          
           <li className="  p-2 rounded-lg border-white">Horario</li>
         </ul>
 
