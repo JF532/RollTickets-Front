@@ -20,8 +20,27 @@
   border-radius: 8px;
   margin-left: 300px;
 }
+ .Scroll {
+  overflow-y: scroll;
+  height: 6rem; /* ajuste o tamanho como quiser */
+}
 
+/* Estiliza a barra de scroll APENAS para elementos com classe Scroll */
+.Scroll::-webkit-scrollbar {
+  width: 12px;
+}
 
+.Scroll::-webkit-scrollbar-track {
+  background-color:#101828;
+  border-radius: 15px;
+}
+
+.Scroll::-webkit-scrollbar-thumb {
+  background-color: #867388;
+  border-radius: 10px;
+  border: 2px solid #0f0f0f;
+}
+ 
 
 /*
 button {

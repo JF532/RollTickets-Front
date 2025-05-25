@@ -6,7 +6,7 @@ import NavBar from "../../Components/Navbar";
 
 function Home() {
   return (
-    <div className="w-screen min-h-screen bg-gray-900">
+    <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
       <NavBar />
 
       <Swiper />
