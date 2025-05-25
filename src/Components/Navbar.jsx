@@ -13,17 +13,16 @@ export default function Navbar() {
             <IoTicketOutline className="text-white text-4xl" />{" "}
           </li>
           <li className="  p-2 rounded-lg">
-            <a className="hover:text-black" href="/cadastro">
-              {" "}
-              Home{" "}
+            <a className="hover:text-black" href="/">
+              Home
             </a>
           </li>
-          <li className="  p-2 rounded-lg"><a className="hover:text-black" href="/filmes">
-              {" "}
-              Filmes e Horários{" "}
-            </a></li>
-          
-          <li className="  p-2 rounded-lg border-white">Horario</li>
+          <li className="  p-2 rounded-lg">
+            <a className="hover:text-black" href="/filmes">
+              Filmes e Horários
+            </a>
+          </li>
+
         </ul>
 
         <ul className="flex items-center gap-6">
@@ -39,7 +38,9 @@ export default function Navbar() {
           </div>
 
           <li>
-            <CgProfile className="text-white text-4xl" />
+            <a className="hover:text-black" href="/cadastro">
+              <CgProfile className="text-white text-4xl" />
+            </a>
           </li>
         </ul>
       </nav>
