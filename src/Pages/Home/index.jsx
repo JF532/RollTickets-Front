@@ -7,7 +7,6 @@ import teste1 from '../../IMG/Fortnite.jpg'
 import teste2 from '../../IMG/Homem-Aranha.jpg'
 import teste3 from '../../IMG/RickyAndMorty.jpg'
 
-import { Card } from "flowbite-react";
 
 import { AppNavbar } from "../../Components/Navbar";
 import { EffectCoverflow, Pagination } from 'swiper/modules';
@@ -15,6 +14,7 @@ import 'swiper/css/effect-coverflow';
 import { IoSearch } from 'react-icons/io5';
 import { IoTicketOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import Card from "../../Components/Card"
 
 
 function Home() {
@@ -91,123 +91,18 @@ function Home() {
       <div className='flex justify-center mt-20 items-center'>
 
         <div class="grid grid-cols-4 gap-4">
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-            
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-          
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-          
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-          
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-          
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
-
-          
-          <div>
-
-            <Card
-              className="max-w-sm"
-              renderImage={() => <img width={500} height={500} src={teste} alt="image 1" />}
-            >
-              <h5 className="text-2xl font-bold tracking-tight text-gray-900">
-                Noteworthy technology acquisitions 2021
-              </h5>
-              <p className="font-normal text-gray-700">
-                Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-              </p>
-            </Card>
-
-          </div>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
 
       </div>
