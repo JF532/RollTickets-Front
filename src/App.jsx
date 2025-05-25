@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home/index";
 //import Auth from "./Pages/Auth/index";
 import UserForm from "./Components/UserForm"; // <- também ajustar aqui!
+import FilmesHorarios from "./Pages/FilmesHorarios";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<UserForm />} />
+        <Route path="/filmes" element={<FilmesHorarios/>}/>
       </Routes>
     </Router>
   );
