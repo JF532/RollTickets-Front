@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Grid from "../../Components/Grid";
 import Swiper from "../../Components/Swiper";
 import NavBar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
 
 function Home() {
   return (
@@ -12,6 +13,8 @@ function Home() {
       <Swiper />
 
       <Grid />
+
+      <Footer/>
     </div>
   );
 }
