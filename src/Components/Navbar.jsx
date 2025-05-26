@@ -10,15 +10,18 @@ export default function Navbar() {
         <ul className="flex items-center gap-3">
           <li>
             {" "}
-            <IoTicketOutline className="text-white text-4xl" />{" "}
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/">
+              <IoTicketOutline className=" text-4xl" />{" "}
+            </a>
+
           </li>
           <li className="  p-2 rounded-lg">
-            <a className="hover:text-black transition delay-100 duration-300 ease-in rounded-full" href="/">
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/">
               Home
             </a>
           </li>
           <li className="  p-2 rounded-lg">
-            <a className="hover:text-black" href="/filmes">
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/filmes">
               Filmes e Horários
             </a>
           </li>
@@ -37,8 +40,8 @@ export default function Navbar() {
           </div>
 
           <li>
-            <a className="hover:text-black" href="/cadastrar">
-              <CgProfile className="text-white text-4xl" />
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/cadastro">
+              <CgProfile className="text-4xl" />
             </a>
           </li>
         </ul>
