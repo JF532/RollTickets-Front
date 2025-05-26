@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { criarUsuario } from "../../Controllers/api";
-import NavBar from "../Navbar";
+
 
 function UserForm() {
   const [formData, setFormData] = useState({
@@ -32,11 +32,11 @@ function UserForm() {
 
   return (
     <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
-      <NavBar />
+      
 
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto mt-10 p-6 bg-gray-800 rounded-xl shadow-md"
+        className="max-w-md mx-auto mt-45 p-6 bg-gray-800 rounded-xl shadow-md"
       >
         <div className="mb-4">
           <label className="block text-white mb-1">Nome:</label>
@@ -105,6 +105,15 @@ function UserForm() {
           >
             Cadastrar
           </button>
+        </div>
+
+           <div className="flex justify-center">
+
+         
+            <label className="mt-10 text-white flex gap-2" htmlFor="">Tem conta ?
+              <a className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 " href="/cadastrar">Entrar</a>
+              </label>
+          
         </div>
       </form>
     </div>
