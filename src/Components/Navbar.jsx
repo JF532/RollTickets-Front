@@ -37,7 +37,7 @@ export default function Navbar() {
           </div>
 
           <li>
-            <a className="hover:text-black" href="/cadastro">
+            <a className="hover:text-black" href="/cadastrar">
               <CgProfile className="text-white text-4xl" />
             </a>
           </li>

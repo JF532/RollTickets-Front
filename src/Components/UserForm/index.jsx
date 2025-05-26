@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { criarUsuario } from "../../Controllers/api";
-import NavBar from "../Navbar"
+import NavBar from "../Navbar";
 
 function UserForm() {
   const [formData, setFormData] = useState({
@@ -8,14 +8,14 @@ function UserForm() {
     email: "",
     senha: "",
     cpf: "",
-    telefone: ""
+    telefone: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -34,25 +34,79 @@ function UserForm() {
     <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
       <NavBar />
 
-      <form onSubmit={handleSubmit}>
-        <label style={{color: "white"}}>Nome:</label>
-        <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md mx-auto mt-10 p-6 bg-gray-800 rounded-xl shadow-md"
+      >
+        <div className="mb-4">
+          <label className="block text-white mb-1">Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            value={formData.nome}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <label style={{color: "white"}}>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+        <div className="mb-4">
+          <label className="block text-white mb-1">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <label style={{color: "white"}}>Senha:</label>
-        <input type="password" name="senha" value={formData.senha} onChange={handleChange} required />
+        <div className="mb-4">
+          <label className="block text-white mb-1">Senha:</label>
+          <input
+            type="password"
+            name="senha"
+            value={formData.senha}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <label style={{color: "white"}}>CPF:</label>
-        <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} required />
+        <div className="mb-4">
+          <label className="block text-white mb-1">CPF:</label>
+          <input
+            type="text"
+            name="cpf"
+            value={formData.cpf}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <label style={{color: "white"}}>Telefone:</label>
-        <input type="text" name="telefone" value={formData.telefone} onChange={handleChange} required />
+        <div className="mb-6">
+          <label className="block text-white mb-1">Telefone:</label>
+          <input
+            type="text"
+            name="telefone"
+            value={formData.telefone}
+            onChange={handleChange}
+            required
+            className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
 
-        <button type="submit" className="border-2" style={{color: "white"}}>Cadastrar</button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+          >
+            Cadastrar
+          </button>
+        </div>
       </form>
-
     </div>
   );
 }
