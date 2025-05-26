@@ -13,7 +13,7 @@ export default function Navbar() {
             <IoTicketOutline className="text-white text-4xl" />{" "}
           </li>
           <li className="  p-2 rounded-lg">
-            <a className="hover:text-black" href="/">
+            <a className="hover:text-black transition delay-100 duration-300 ease-in rounded-full" href="/">
               Home
             </a>
           </li>
