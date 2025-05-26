@@ -8,6 +8,7 @@ import teste2 from "../IMG/Homem-Aranha.jpg";
 import teste3 from "../IMG/RickyAndMorty.jpg";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css/effect-coverflow";
+
 export default function Swiper() {
   return (
     <div className="w-full h-full mt-10 flex justify-center items-center">

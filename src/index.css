@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import 'flowbite';
+@import "flowbite";
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -12,15 +12,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 .swiper-image {
-  width: 1000px; 
+  width: 1000px;
   height: 700px;
   border-radius: 8px;
   margin-left: 300px;
 }
- .Scroll {
+.Scroll {
   overflow-y: scroll;
   height: 6rem; /* ajuste o tamanho como quiser */
 }
@@ -31,7 +29,7 @@
 }
 
 .Scroll::-webkit-scrollbar-track {
-  background-color:#101828;
+  background-color: #101828;
   border-radius: 15px;
 }
 
@@ -40,7 +38,6 @@
   border-radius: 10px;
   border: 2px solid #0f0f0f;
 }
- 
 
 /*
 button {
@@ -55,10 +52,6 @@ button {
 }
 */
 
-
-
- 
-
 .swiper-pagination {
   position: absolute !important;
   text-align: center;
@@ -66,6 +59,3 @@ button {
   bottom: 10px !important;
   left: 0;
 }
-
-
-
