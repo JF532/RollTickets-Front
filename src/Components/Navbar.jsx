@@ -47,7 +47,7 @@ export default function Navbar() {
             
             */}
 
-            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/filmes">
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/login">
               Entrar
             </a>
 
