@@ -22,7 +22,6 @@ export default function Navbar() {
               Filmes e Horários
             </a>
           </li>
-
         </ul>
 
         <ul className="flex items-center gap-6">

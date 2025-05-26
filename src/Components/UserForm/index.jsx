@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { criarUsuario } from "../../Controllers/api";
+import NavBar from "../Navbar"
 
 function UserForm() {
   const [formData, setFormData] = useState({
@@ -30,29 +31,29 @@ function UserForm() {
   };
 
   return (
-    <div className="h-full w-full bg-gray-500">
+    <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
+      <NavBar />
 
       <form onSubmit={handleSubmit}>
-        <label>Nome:</label>
+        <label style={{color: "white"}}>Nome:</label>
         <input type="text" name="nome" value={formData.nome} onChange={handleChange} required />
 
-        <label>Email:</label>
+        <label style={{color: "white"}}>Email:</label>
         <input type="email" name="email" value={formData.email} onChange={handleChange} required />
 
-        <label>Senha:</label>
+        <label style={{color: "white"}}>Senha:</label>
         <input type="password" name="senha" value={formData.senha} onChange={handleChange} required />
 
-        <label>CPF:</label>
+        <label style={{color: "white"}}>CPF:</label>
         <input type="text" name="cpf" value={formData.cpf} onChange={handleChange} required />
 
-        <label>Telefone:</label>
+        <label style={{color: "white"}}>Telefone:</label>
         <input type="text" name="telefone" value={formData.telefone} onChange={handleChange} required />
 
-        <button type="submit" className="border-2">Cadastrar</button>
+        <button type="submit" className="border-2" style={{color: "white"}}>Cadastrar</button>
       </form>
 
     </div>
-
   );
 }
 

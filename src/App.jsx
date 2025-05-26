@@ -5,16 +5,13 @@ import Home from "./Pages/Home/index";
 import UserForm from "./Components/UserForm"; // <- também ajustar aqui!
 import FilmesHorarios from "./Pages/FilmesHorarios";
 
-
 function App() {
   return (
-
     <Router>
-      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cadastro" element={<UserForm />} />
-        <Route path="/filmes" element={<FilmesHorarios/>}/>
+        <Route path="/filmes" element={<FilmesHorarios />} />
       </Routes>
     </Router>
   );
