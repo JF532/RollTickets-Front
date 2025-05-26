@@ -111,7 +111,7 @@ function UserForm() {
 
          
             <label className="mt-10 text-white flex gap-2" htmlFor="">Tem conta ?
-              <a className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 " href="/cadastrar">Entrar</a>
+               <a className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 " href="/cadastrar">Entrar</a>
               </label>
           
         </div>
