@@ -40,9 +40,30 @@ export default function Navbar() {
           </div>
 
           <li>
-            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/cadastrar">
+            {/* <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/cadastrar">
               <CgProfile className="text-4xl" />
+            </a> 
+              Comentei para testar uma coisa
+            
+            */}
+
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/filmes">
+              Entrar
             </a>
+
+          </li>
+          <li>
+            {/* <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/cadastrar">
+              <CgProfile className="text-4xl" />
+            </a> 
+              Comentei para testar uma coisa
+            
+            */}
+
+            <a className="hover:text-black transition delay-100 duration-300 ease-in" href="/cadastrar">
+              Cadastre-se
+            </a>
+
           </li>
         </ul>
       </nav>

@@ -7,7 +7,7 @@ import Footer from "../../Components/Footer";
 
 function Home() {
   return (
-    <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
+    <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <NavBar />
 
       <Swiper />
