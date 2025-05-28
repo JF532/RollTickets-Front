@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { criarUsuario } from "../../Controllers/api";
 
-
 function UserForm() {
   const [formData, setFormData] = useState({
     nome: "",
@@ -32,8 +31,6 @@ function UserForm() {
 
   return (
     <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
-      
-
       <form
         onSubmit={handleSubmit}
         className="max-w-md mx-auto mt-45 p-6 bg-gray-800 rounded-xl shadow-md"
@@ -107,13 +104,16 @@ function UserForm() {
           </button>
         </div>
 
-           <div className="flex justify-center">
-
-         
-            <label className="mt-10 text-white flex gap-2" htmlFor="">Tem conta ?
-               <a className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 " href="/login">Entrar</a>
-              </label>
-          
+        <div className="flex justify-center">
+          <label className="mt-10 text-white flex gap-2" htmlFor="">
+            Tem conta ?
+            <a
+              className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 "
+              href="/login"
+            >
+              Entrar
+            </a>
+          </label>
         </div>
       </form>
     </div>
