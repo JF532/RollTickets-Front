@@ -22,6 +22,8 @@ export default function Grid() {
     //Com o useEffect só vai ser chamada uma vez
     getFilmes();
   }, []);
+
+  
   return (
     <div>
       <div className="flex justify-center mt-20 items-center">
