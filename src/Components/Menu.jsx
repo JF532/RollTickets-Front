@@ -1,6 +1,7 @@
 import { Sidebar, SidebarItem, SidebarItemGroup, SidebarItems } from "flowbite-react";
 import { LuTicket } from "react-icons/lu";
 import { CiLogout } from "react-icons/ci";
+
 export default function Menu({ onClose }) {
   function handleLogout() {
     localStorage.removeItem("clienteLogado");
@@ -16,7 +17,7 @@ export default function Menu({ onClose }) {
             Meus Ingressos
           </SidebarItem>
 
-          <SidebarItem  onClick={handleLogout} icon={CiLogout}>
+          <SidebarItem  onClick={handleLogout} icon={CiLogout} className="cursor-pointer">
             Sair
           </SidebarItem>
         </SidebarItemGroup>
