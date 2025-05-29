@@ -24,6 +24,7 @@ function UserForm() {
     try {
       const response = await criarUsuario(formData);
       console.log("Usuário criado:", response.data);
+      window.location.href = "/login";
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     }

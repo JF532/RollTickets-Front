@@ -23,7 +23,6 @@ export default function Grid() {
     getFilmes();
   }, []);
 
-  
   return (
     <div>
       <div className="flex justify-center mt-20 items-center">

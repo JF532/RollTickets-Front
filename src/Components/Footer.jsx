@@ -13,9 +13,15 @@ export default function Footer() {
     <FooterFlowBite container>
       <FooterCopyright href="#" by="Roll Tickets™" year={ano} />
       <FooterLinkGroup>
-        <FooterLink target="_blank" href="https://github.com/Feliipee013">Felipe Taveira</FooterLink>
-        <FooterLink target="_blank" href="https://github.com/FerTamarindo">Fernanda Tamarindo</FooterLink>
-        <FooterLink target="_blank" href="https://github.com/JF532">João Filipe</FooterLink>
+        <FooterLink target="_blank" href="https://github.com/Feliipee013">
+          Felipe Taveira
+        </FooterLink>
+        <FooterLink target="_blank" href="https://github.com/FerTamarindo">
+          Fernanda Tamarindo
+        </FooterLink>
+        <FooterLink target="_blank" href="https://github.com/JF532">
+          João Filipe
+        </FooterLink>
         <FooterLink href="#">Professor: Walter</FooterLink>
       </FooterLinkGroup>
     </FooterFlowBite>
