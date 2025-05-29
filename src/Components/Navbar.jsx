@@ -81,7 +81,7 @@ export default function Navbar() {
             <li>
               <button
                 onClick={() => setMostrarMenu(!mostrarMenu)}
-                className="hover:text-black"
+                className="hover:text-black transition delay-100 duration-300 ease-in cursor-pointer"
               >
                 <CgProfile className="text-4xl" />
               </button>
