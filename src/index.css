@@ -60,3 +60,18 @@ button {
   left: 0;
 }
 
+
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #81318a !important; 
+  transform: translateX(0); 
+}
+
+.swiper-button-prev {
+  left: 12% !important; 
+}
+
+.swiper-button-next {
+  right: 12% !important; 
+}
