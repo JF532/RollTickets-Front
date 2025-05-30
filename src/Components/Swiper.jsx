@@ -39,6 +39,8 @@ export default function Swiper() {
                 src={filme}
                 className="w-[750px] h-[550px] object-cover rounded-3xl shadow-xl/30"
               />
+
+              
             </SwiperSlide>
           ))}
         </Swp>
