@@ -12,7 +12,7 @@ function Home() {
 
       <Swiper />
 
-      <Grid />
+      <Grid url="https://api.themoviedb.org/3/movie/upcoming"/>
 
       <Footer/>
     </div>
