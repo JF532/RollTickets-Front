@@ -5,11 +5,8 @@ import axios from "axios";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
+import "../index.css"
 
-import Coringa from "../IMG/Coringa.jpg";
-import Fortnite from "../IMG/Fortnite.jpg";
-import HomemAranha from "../IMG/Homem-Aranha.jpg";
-import RickyAndMorty from "../IMG/RickyAndMorty.jpg";
 
 export default function Swiper() {
   const [filmes, setFilmes] = useState([]);
