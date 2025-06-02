@@ -27,7 +27,7 @@ export default function Grid(props) {
   return (
     <div>
       <div className="flex justify-center mt-20 items-center">
-        <h1 className="font-icarubrik text-white text-7xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
+        <h1 className="font-icarubrik text-white text-5xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
       </div>
 
       <div className="flex justify-center mt-20 items-center">
