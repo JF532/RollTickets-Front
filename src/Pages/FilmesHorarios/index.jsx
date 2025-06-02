@@ -7,7 +7,7 @@ export default function FilmesHorarios() {
   return (
     <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
       <Navbar />
-      <Grid url="https://api.themoviedb.org/3/discover/movie"/>
+      <Grid url="https://api.themoviedb.org/3/discover/movie" header="Em cartaz"/>
       <Footer/>
     </div>
   );

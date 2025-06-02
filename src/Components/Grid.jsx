@@ -12,7 +12,7 @@ export default function Grid(props) {
       params: {
         api_key: "156d2e5ce1b6c6c0fe56949f263204e1",
         language: "pt-BR",
-        region: "br"
+        region: "br",
       },
     }).then((response) => {
       setFilmes(response.data.results);
@@ -26,6 +26,10 @@ export default function Grid(props) {
 
   return (
     <div>
+      <div className="flex justify-center mt-20 items-center">
+        <h1 className="font-icarubrik text-white text-7xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
+      </div>
+
       <div className="flex justify-center mt-20 items-center">
         <div class="grid grid-cols-3 gap-4">
           {filmes.map((movie) => (

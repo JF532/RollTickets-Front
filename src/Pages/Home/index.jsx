@@ -10,9 +10,9 @@ function Home() {
     <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <NavBar />
 
-      <Swiper />
+      <Swiper header="Em Cartaz"/>
 
-      <Grid url="https://api.themoviedb.org/3/movie/upcoming"/>
+      <Grid url="https://api.themoviedb.org/3/movie/upcoming" header="Em Breve"/>
 
       <Footer/>
     </div>
