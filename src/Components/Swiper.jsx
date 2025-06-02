@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import "../index.css"
 
 
-export default function Swiper() {
+export default function Swiper(props) {
   const [filmes, setFilmes] = useState([]);
 
   const getFilmes = () => {
@@ -31,8 +31,12 @@ export default function Swiper() {
     getFilmes();
   }, []);
   return (
+    
     <div className="w-full h-screen bg-slate-900">
-      <div className="w-screen h-screen flex justify-center items-center mt-19">
+      <div className="flex justify-center mt-20 items-center">
+        <h1 className="text-white text-7xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
+      </div>
+      <div className="w-screen h-screen flex justify-center items-center ">
         <Swp
           effect="coverflow"
           grabCursor={true}
