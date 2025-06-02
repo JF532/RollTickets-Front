@@ -34,7 +34,7 @@ export default function Swiper(props) {
     
     <div className="w-full h-screen bg-slate-900">
       <div className="flex justify-center mt-20 items-center">
-        <h1 className="text-white text-7xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
+        <h1 className="text-white text-5xl" style={{ fontFamily: "'ICA Rubrik', sans-serif" }}>{props.header}</h1>
       </div>
       <div className="w-screen h-screen flex justify-center items-center ">
         <Swp
