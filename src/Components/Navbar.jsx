@@ -3,10 +3,11 @@ import { IoSearch } from "react-icons/io5";
 import { IoTicketOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Menu from "./Menu";
+import Avatar from "./Avatar";
 
 export default function Navbar() {
   const [logado, setLogado] = useState(false);
-  const [mostrarMenu, setMostrarMenu] = useState(false);
+  /* const [mostrarMenu, setMostrarMenu] = useState(false); */
 
   useEffect(() => {
     const cliente = localStorage.getItem("clienteLogado");
@@ -77,7 +78,7 @@ export default function Navbar() {
             </li>
           )}
 
-          {logado && (
+          {/* {logado && (
             <li>
               <button
                 onClick={() => setMostrarMenu(!mostrarMenu)}
@@ -86,10 +87,11 @@ export default function Navbar() {
                 <CgProfile className="text-4xl" />
               </button>
             </li>
-          )}
+          )} */}
+          {logado && <Avatar/>}
         </ul>
       </nav>
-      {logado && mostrarMenu && <Menu onClose={() => setMostrarMenu(false)} />}
+      {/* {logado && mostrarMenu && <Menu onClose={() => setMostrarMenu(false)} />} */}
     </div>
   );
 }
