@@ -20,7 +20,7 @@ export default function Navbar() {
           <li>
             {" "}
             <a
-              className="hover:text-black transition delay-100 duration-300 ease-in"
+              className="hover:text-gray-300 transition delay-100 duration-300 ease-in"
               href="/"
             >
               <IoTicketOutline className=" text-4xl" />{" "}
@@ -28,7 +28,7 @@ export default function Navbar() {
           </li>
           <li className="  p-2 rounded-lg">
             <a
-              className="hover:text-black transition delay-100 duration-300 ease-in"
+              className="hover:text-gray-300 transition delay-100 duration-300 ease-in"
               href="/"
             >
               Home
@@ -36,7 +36,7 @@ export default function Navbar() {
           </li>
           <li className="  p-2 rounded-lg">
             <a
-              className="hover:text-black transition delay-100 duration-300 ease-in"
+              className="hover:text-gray-300 transition delay-100 duration-300 ease-in"
               href="/filmes"
             >
               Filmes e Horários
@@ -59,7 +59,7 @@ export default function Navbar() {
           {!logado && (
             <li>
               <a
-                className="hover:text-black transition delay-100 duration-300 ease-in"
+                className="hover:text-gray-300 transition delay-100 duration-300 ease-in"
                 href="/login"
               >
                 Entrar
@@ -69,7 +69,7 @@ export default function Navbar() {
           {!logado && (
             <li>
               <a
-                className="hover:text-black transition delay-100 duration-300 ease-in"
+                className="hover:text-gray-300 transition delay-100 duration-300 ease-in"
                 href="/cadastrar"
               >
                 Cadastre-se
@@ -81,7 +81,7 @@ export default function Navbar() {
             <li>
               <button
                 onClick={() => setMostrarMenu(!mostrarMenu)}
-                className="hover:text-black transition delay-100 duration-300 ease-in cursor-pointer"
+                className="hover:text-gray-300 transition delay-100 duration-300 ease-in cursor-pointer"
               >
                 <CgProfile className="text-4xl" />
               </button>
