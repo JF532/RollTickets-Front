@@ -33,7 +33,7 @@ export default function Grid(props) {
       <div className="flex justify-center mt-20 items-center">
         <div class="grid grid-cols-3 gap-4">
           {filmes.map((movie) => (
-            <Card key={movie.id} movie={movie} />
+            <Card key={movie.id} movie={movie} name = {props.name}/>
           ))}
         </div>
       </div>

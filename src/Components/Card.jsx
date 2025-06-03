@@ -1,42 +1,56 @@
 import { Card as CardFlowbite } from "flowbite-react";
-import teste from "../IMG/Coringa.jpg";
 import "../index.css";
 import Rating from "../Components/Rating";
+import { Link } from "react-router-dom";
 
-export default function Card({ movie }) {
+export default function Card({ movie, name }) {
+  const cartaz = name === "FilmesHorarios"; //Atribui um boolean em relação a 'FilmesHoraios', onde se você estiver na página 'FilmesHoraios' ele vai executar um card diferente 
+
   return (
-    <div>
-      <CardFlowbite
-        className="max-w-sm m-4 h-208"
-        renderImage={() => (
-          <img
-            width={500}
-            height={500}
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            alt="image 1"
-          />
-        )}
-      >
-        <div className="flex flex-col gap-4">
-          <div>
-            <h5 className="text-2xl font-bold tracking-tight text-gray-400 ">
-              {movie.title}
-            </h5>
-          </div>
+    <CardFlowbite
+      className="max-w-sm m-4 flex flex-col justify-between p-4 bg-gray-800 shadow-lg"
+      renderImage={() => (
+        <img
+          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          alt={movie.title}
+          className="rounded-t w-full"
+        />
+      )}
+    >
+      <div className="flex flex-col justify-between flex-grow gap-4">
+       
+        <h5 className="text-2xl font-bold tracking-tight text-gray-100">
+          {movie.title}
+        </h5>
 
-          <div>
-            <p className="font-normal text-gray-500 h-24 overflow-y-scroll Scroll">
-              {movie.overview}
-            </p>
-          </div>
+   
+        <p className="font-normal text-gray-400 h-24 overflow-y-auto Scroll">
+          {movie.overview}
+        </p>
 
-          <div>
-            <p className="font-normal text-gray-500 h-2 ">
-              <Rating valor={movie.vote_average} />
-            </p>
-          </div>
+        {/* Estrelas sempre na mesma posição */}
+        <div className="mt-auto">
+          <Rating valor={movie.vote_average} />
         </div>
-      </CardFlowbite>
-    </div>
+      </div>
+
+      <div className="pt-4">
+        {cartaz ? (
+          <Link
+            to={`/`}
+            className="block text-center w-full py-2 bg-[#81318a] text-[#c5b8bc] font-semibold rounded hover:bg-[#81318abd] transition"
+          >
+            Comprar
+          </Link>
+        ) : (
+          <button
+            className="w-full py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 transition"
+            disabled
+          >
+            Indisponível
+          </button>
+        )}
+      </div>
+    </CardFlowbite>
   );
 }
