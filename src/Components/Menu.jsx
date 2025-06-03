@@ -33,7 +33,7 @@ export default function Menu({ onClose }) {
               <span className="text-purple-300"><span className="text-gray-300">Email:</span> {cliente?.email}</span>
             </div>
 
-            <SidebarItem className="hover:text-purple-300 transition delay-100 duration-300 ease-in " href="#" icon={LuTicket}>
+            <SidebarItem className="hover:text-purple-300 transition delay-100 duration-300 ease-in " href="/meus-ingresssos" icon={LuTicket}>
               Meus Ingressos
             </SidebarItem>
 
