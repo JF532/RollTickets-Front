@@ -38,7 +38,7 @@ export default function MeusIngressos() {
                   <a
                     
                   >
-                    PÓSSIVEL QRCODE
+                    POSSÍVEL QRCODE
                   </a>
                 </TableCell>
               </TableRow>

@@ -5,9 +5,9 @@ import Footer from "../../Components/Footer";
 
 export default function FilmesHorarios() {
   return (
-    <div className="w-screen min-h-screen bg-gray-900 overflow-x-hidden">
+    <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <Navbar />
-      <Grid url="https://api.themoviedb.org/3/discover/movie" header="Em cartaz"/>
+      <Grid url="https://api.themoviedb.org/3/movie/now_playing" header="Em cartaz" name="FilmesHorarios"/>
       <Footer/>
     </div>
   );
