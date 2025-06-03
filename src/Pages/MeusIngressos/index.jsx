@@ -29,11 +29,11 @@ export default function MeusIngressos() {
             <TableBody className="divide-y border" >
               <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className=" whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Apple MacBook Pro 17"
+                  Lilo e Stitch
                 </TableCell>
-                <TableCell className="border">Sliver</TableCell>
-                <TableCell className="border">Laptop</TableCell>
-                <TableCell className="border">$2999</TableCell>
+                <TableCell className="border">Sala 5</TableCell>
+                <TableCell className="border">13-02-2025/14:30</TableCell>
+                <TableCell className="border">$29</TableCell>
                 <TableCell className="border">
                   <a
                     
@@ -44,61 +44,61 @@ export default function MeusIngressos() {
               </TableRow>
               <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Microsoft Surface Pro
+                  Homem de Ferro
                 </TableCell>
-                <TableCell className="border">White</TableCell>
-                <TableCell className="border">Laptop PC</TableCell>
-                <TableCell className="border">$1999</TableCell>
+                <TableCell className="border">Sala 2</TableCell>
+                <TableCell className="border">15-04-2025/14:40</TableCell>
+                <TableCell className="border">$20</TableCell>
                 <TableCell className="border">
                   <a
-               
+                
                   >
-                    Edit
+                    
                   </a>
                 </TableCell>
               </TableRow>
               <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Magic Mouse 2
+                  O Rei Leão
                 </TableCell>
-                <TableCell className="border">Black</TableCell>
-                <TableCell className="border">Accessories</TableCell>
-                <TableCell className="border">$99</TableCell>
+                <TableCell className="border">Sala 3</TableCell>
+                <TableCell className="border">10-08-2024/13:30</TableCell>
+                <TableCell className="border">$29</TableCell>
                 <TableCell>
                   <a
                   
                   >
-                    Edit
+                    
                   </a>
                 </TableCell>
               </TableRow>
               <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Google Pixel Phone
+                  Toy Story 4
                 </TableCell>
-                <TableCell className="border">Gray</TableCell>
-                <TableCell className="border">Phone</TableCell>
-                <TableCell className="border">$799</TableCell>
+                <TableCell className="border">sala 2</TableCell>
+                <TableCell className="border">09-02-2023/12:40</TableCell>
+                <TableCell className="border">$29</TableCell>
                 <TableCell className="border">
                   <a
-                   
+                  
                   >
-                    Edit
+                    
                   </a>
                 </TableCell>
               </TableRow>
               <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  Apple Watch 5
+                  deadpool
                 </TableCell>
-                <TableCell className="border">Red</TableCell>
-                <TableCell className="border">Wearables</TableCell>
-                <TableCell className="border">$999</TableCell>
+                <TableCell className="border">Sala 5</TableCell>
+                <TableCell className="border">05-05-2023/18:00</TableCell>
+                <TableCell className="border">$20</TableCell>
                 <TableCell className="border">
                   <a
                     
                   >
-                    Edit
+                    
                   </a>
                 </TableCell>
               </TableRow>
