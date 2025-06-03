@@ -15,77 +15,73 @@ export default function MeusIngressos() {
     <>
       <div className="w-auto min-h-screen bg-gray-900 ">
         <NavBar />
-        <div className="overflow-x-auto mt-20">
+        <div className="overflow-x-auto mt-20 p-15">
           <Table hoverable>
-            <TableHead>
-              <TableHeadCell>Product name</TableHeadCell>
-              <TableHeadCell>Color</TableHeadCell>
-              <TableHeadCell>Category</TableHeadCell>
-              <TableHeadCell>Price</TableHeadCell>
-              <TableHeadCell>
+            <TableHead >
+              <TableHeadCell className="border">Filme</TableHeadCell>
+              <TableHeadCell className="border">Sessão</TableHeadCell>
+              <TableHeadCell className="border">Data e Horário</TableHeadCell>
+              <TableHeadCell className="border">Valor</TableHeadCell>
+              <TableHeadCell className="border">
                 <span className="sr-only">Edit</span>
               </TableHeadCell>
             </TableHead>
-            <TableBody className="divide-y">
-              <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+            <TableBody className="divide-y border" >
+              <TableRow className="bg-white border dark:bg-gray-800">
+                <TableCell className=" whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   Apple MacBook Pro 17"
                 </TableCell>
-                <TableCell>Sliver</TableCell>
-                <TableCell>Laptop</TableCell>
-                <TableCell>$2999</TableCell>
-                <TableCell>
+                <TableCell className="border">Sliver</TableCell>
+                <TableCell className="border">Laptop</TableCell>
+                <TableCell className="border">$2999</TableCell>
+                <TableCell className="border">
                   <a
-                    href="#"
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                    
                   >
-                    Edit
+                    PÓSSIVEL QRCODE
                   </a>
                 </TableCell>
               </TableRow>
-              <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   Microsoft Surface Pro
                 </TableCell>
-                <TableCell>White</TableCell>
-                <TableCell>Laptop PC</TableCell>
-                <TableCell>$1999</TableCell>
-                <TableCell>
+                <TableCell className="border">White</TableCell>
+                <TableCell className="border">Laptop PC</TableCell>
+                <TableCell className="border">$1999</TableCell>
+                <TableCell className="border">
                   <a
-                    href="#"
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+               
                   >
                     Edit
                   </a>
                 </TableCell>
               </TableRow>
-              <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   Magic Mouse 2
                 </TableCell>
-                <TableCell>Black</TableCell>
-                <TableCell>Accessories</TableCell>
-                <TableCell>$99</TableCell>
+                <TableCell className="border">Black</TableCell>
+                <TableCell className="border">Accessories</TableCell>
+                <TableCell className="border">$99</TableCell>
                 <TableCell>
                   <a
-                    href="#"
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                  
                   >
                     Edit
                   </a>
                 </TableCell>
               </TableRow>
-              <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+              <TableRow className="bg-white border dark:bg-gray-800">
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   Google Pixel Phone
                 </TableCell>
-                <TableCell>Gray</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>$799</TableCell>
-                <TableCell>
+                <TableCell className="border">Gray</TableCell>
+                <TableCell className="border">Phone</TableCell>
+                <TableCell className="border">$799</TableCell>
+                <TableCell className="border">
                   <a
-                    href="#"
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                   
                   >
                     Edit
                   </a>
@@ -95,18 +91,20 @@ export default function MeusIngressos() {
                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                   Apple Watch 5
                 </TableCell>
-                <TableCell>Red</TableCell>
-                <TableCell>Wearables</TableCell>
-                <TableCell>$999</TableCell>
-                <TableCell>
+                <TableCell className="border">Red</TableCell>
+                <TableCell className="border">Wearables</TableCell>
+                <TableCell className="border">$999</TableCell>
+                <TableCell className="border">
                   <a
-                    href="#"
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
+                    
                   >
                     Edit
                   </a>
                 </TableCell>
               </TableRow>
+
+
+              
             </TableBody>
           </Table>
         </div>
