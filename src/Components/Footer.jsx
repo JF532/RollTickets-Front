@@ -7,10 +7,10 @@ import {
 } from "flowbite-react";
 
 export default function Footer() {
-  const ano = new Date().getFullYear;
+  const ano = new Date().getFullYear();
 
   return (
-    <FooterFlowBite container>
+    <FooterFlowBite container className="rounded-none">
       <FooterCopyright href="#" by="Roll Tickets™" year={ano} />
       <FooterLinkGroup>
         <FooterLink target="_blank" href="https://github.com/Feliipee013">
