@@ -75,3 +75,8 @@ button {
 .swiper-button-next {
   right: 12% !important; 
 }
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none !important;
+}
