@@ -45,16 +45,19 @@ export default function Navbar() {
         </ul>
 
         <ul className="flex items-center gap-6">
-          <div className="relative text-gray-600">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <IoSearch className="text-gray-400 text-lg" />
-            </span>
+          <div className="flex items-center relative max-w-[190px]">
+            <IoSearch className="absolute left-4 text-gray-400 w-4 h-4" />
             <input
-              type="search"
-              className="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-0 focus:border-gray-300 text-black"
+              type="text"
               placeholder="Pesquisar filme"
+              className="w-full h-10 pl-10 pr-4 rounded-full border-2 border-transparent
+            bg-[#f3f3f4] text-[#0d0c22] placeholder-[#9e9ea7]
+            transition duration-300 ease-in-out
+            focus:outline-none focus:ring-2 focus:ring-purple-500/40
+            hover:border-purple-500/30 focus:bg-white hover:bg-white focus:outline-none focus-visible:outline-none"
             />
           </div>
+
 
           {!logado && (
             <li>
@@ -90,6 +93,6 @@ export default function Navbar() {
         </ul>
       </nav>
       {logado && mostrarMenu && <Menu onClose={() => setMostrarMenu(false)} />}
-    </div>
+    </div >
   );
 }
