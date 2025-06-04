@@ -15,7 +15,7 @@ function App() {
         <Route path="/cadastrar" element={<UserForm />} />
         <Route path="/filmes" element={<FilmesHorarios />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/meus-ingresssos" element={<MeusIngressos/>} />
+        <Route path="/meus-ingressos" element={<MeusIngressos/>} />
       </Routes>
     </Router>
   );

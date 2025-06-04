@@ -29,11 +29,19 @@ export default function Menu({ onClose }) {
         <SidebarItems>
           <SidebarItemGroup className="border-none ">
             <div className="flex flex-col gap-3">
-              <span className=" text-purple-300"><span className="text-gray-300">Usuário:</span> {cliente?.nome}</span>
-              <span className="text-purple-300"><span className="text-gray-300">Email:</span> {cliente?.email}</span>
+              <span className=" text-purple-300">
+                <span className="text-gray-300">Usuário:</span> {cliente?.nome}
+              </span>
+              <span className="text-purple-300">
+                <span className="text-gray-300">Email:</span> {cliente?.email}
+              </span>
             </div>
 
-            <SidebarItem className="hover:text-purple-300 transition delay-100 duration-300 ease-in " href="/meus-ingresssos" icon={LuTicket}>
+            <SidebarItem
+              className="hover:text-purple-300 transition delay-100 duration-300 ease-in "
+              href="/meus-ingressos"
+              icon={LuTicket}
+            >
               Meus Ingressos
             </SidebarItem>
 
