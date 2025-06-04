@@ -59,7 +59,7 @@ export default function Swiper(props) {
                     <img
                       src={filme.imageUrl}
                       alt={`Filme ${index + 1}`}
-                      className="w-[383px] h-[574px] object-cover rounded-3xl shadow-xl/30"
+                      className="w-[383px] h-[574px] object-cover rounded-3xl"
                       style={{ cursor: "pointer" }}
                     />
                   </a>
@@ -67,8 +67,8 @@ export default function Swiper(props) {
                   <img
                     src={filme.imageUrl}
                     alt={`Filme ${index + 1}`}
-                    className="w-[383px] h-[574px] object-cover rounded-3xl shadow-xl/30"
-                    style={{ opacity: 0.6, cursor: "grab" }} 
+                    className="w-[383px] h-[574px] object-cover rounded-3xl"
+                    style={{ opacity: 0.6, cursor: "grab" }}
                   />
                 )
               }
