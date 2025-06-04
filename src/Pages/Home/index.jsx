@@ -12,7 +12,7 @@ function Home() {
 
       <Swiper header="Em Cartaz"/>
 
-      <Grid url="https://api.themoviedb.org/3/movie/upcoming" header="Em Breve"/>
+      <Grid url="https://api.themoviedb.org/3/movie/upcoming" header="Em Breve" name="Home"/>
 
       <Footer/>
     </div>
