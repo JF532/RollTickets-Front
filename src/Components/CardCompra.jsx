@@ -3,21 +3,17 @@ import "../index.css";
 import Rating from "../Components/Rating";
 import { Link } from "react-router-dom";
 
-export default function Card({ movie, name }) {
-  const cartaz = name === "FilmesHorarios" ; //Atribui um boolean em relação a 'FilmesHoraios', onde se você estiver na página 'FilmesHoraios' ele vai executar um card diferente 
-  const TMDB = name ==="Home";
+export default function Card({ movie }) {
 
-  const titulo = TMDB ? movie.title : movie.titulo;
-  const sinopse = TMDB ? movie.overview : movie.sinopse;
-  const PathImage = TMDB ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : movie.imageUrl ;
-  const avaliacao = TMDB ? movie.vote_average : movie.avaliacao ;
+
+
   return (
     <CardFlowbite
       className="max-w-sm m-4 flex flex-col justify-between p-4 bg-gray-800 shadow-lg"
       renderImage={() => (
         <img
-           src={PathImage}
-          alt={titulo}
+           src={movie.imageUrl}
+          alt={movie.titulo}
           className="rounded-t w-full"
         />
       )}
@@ -25,36 +21,29 @@ export default function Card({ movie, name }) {
       <div className="flex flex-col justify-between flex-grow gap-4">
        
         <h5 className="text-2xl font-bold tracking-tight text-gray-100">
-           {titulo}
+           {movie.titulo}
         </h5>
 
    
         <p className="font-normal text-gray-400 h-24 overflow-y-auto Scroll">
-             {sinopse}
+             {movie.sinopse}
         </p>
 
           {/* Estrelas sempre na mesma posição */}
         <div className="mt-auto">
-          <Rating valor={avaliacao} />
+          <Rating valor={movie.avaliacao} />
         </div>  
       </div>
 
       <div className="pt-4">
-        {cartaz ? (
+       
           <Link
             to={`/compra/${movie.id}`}
             className="block text-center w-full py-2 bg-[#81318a] text-[#c5b8bc] font-semibold rounded hover:bg-[#81318abd] transition"
           >
             Comprar
           </Link>
-        ) : (
-          <button
-            className="w-full py-2 bg-gray-700 text-gray-300 rounded hover:bg-gray-600 transition"
-            disabled
-          >
-            Indisponível
-          </button>
-        )}
+       
       </div>
     </CardFlowbite>
   );

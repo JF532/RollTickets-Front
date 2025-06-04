@@ -6,6 +6,7 @@ import UserForm from "./Components/UserForm";
 import FilmesHorarios from "./Pages/FilmesHorarios";
 import Login from "./Pages/Login"
 import MeusIngressos from "./Pages/MeusIngressos";
+import Compra from "./Pages/Compra"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/filmes" element={<FilmesHorarios />} />
         <Route path="/login" element={<Login />} />
         <Route path="/meus-ingressos" element={<MeusIngressos/>} />
+        <Route path="/compra/:id" element={<Compra />} />
       </Routes>
     </Router>
   );
