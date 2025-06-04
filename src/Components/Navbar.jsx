@@ -54,7 +54,7 @@ export default function Navbar() {
             bg-[#f3f3f4] text-[#0d0c22] placeholder-[#9e9ea7]
             transition duration-300 ease-in-out
             focus:outline-none focus:ring-2 focus:ring-purple-500/40
-            hover:border-purple-500/30 focus:bg-white hover:bg-white focus-visible:outline-none"
+            hover:border-purple-500/30 focus:bg-white hover:bg-white focus:outline-none focus-visible:outline-none"
             />
           </div>
 
