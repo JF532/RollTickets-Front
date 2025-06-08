@@ -18,7 +18,7 @@ export default function Card({ movie, name }) {
         <img
            src={PathImage}
           alt={titulo}
-          className="rounded-t w-full"
+          className="rounded w-full"
         />
       )}
     >
