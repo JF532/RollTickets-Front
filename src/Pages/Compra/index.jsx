@@ -34,27 +34,34 @@ export default function Compra() {
       <div className="flex ">
         <CardCompra key={filme.id} movie={filme} />
 
-        <div className=" mt-60 ml-120 flex">
+        <div className=" mt-35 ml-120 flex">
           <SeatPicker idSessao={id} onSelect={setAssentosSelecionados} />
 
           <div className="mt-4 ml-25  text-white">
-
             {assentosSelecionados.length > 0 && ( //Isso é só para que esse quadradinho apareça só quando clicarem em algo
-              <ul className="border-3 border-[#81318a] rounded p-6">
-                <h1 className="mb-3 text-[#793381] font-semibold">
-                  Ingressos Selecionados:{" "}
-                </h1>
-                {assentosSelecionados.map((a) => (
-                  <li className="text-gray-300" key={a.id}>
-                    Fileira{" "}
-                    <span className="text-[#b966c2]">{a.assento.fileira}</span>{" "}
-                    - Assento{" "}
-                    <span className="text-[#81318a]"> {a.assento.numero} </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="flex flex-col">
+                <ul className="border-3 border-[#81318a] rounded p-6 bg-[#6321691e]">
+                  <h1 className="mb-3 text-[#793381] font-semibold">
+                    Ingressos Selecionados:{" "}
+                  </h1>
+                  {assentosSelecionados.map((a) => ( //Faz um map dos assentos que eu selecionei
+                    <li className="text-gray-300" key={a.id}>
+                      Fileira{" "}
+                      <span className="text-[#b966c2]">
+                        {a.assento.fileira}
+                      </span>{" "}
+                      - Assento{" "}
+                      <span className="text-[#81318a]">
+                        {" "}
+                        {a.assento.numero}{" "}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button className="text-white p-4 border-4 border-[#81318a] rounded mt-4 hover:bg-gray-800 cursor-pointer bg-[#6321691e] font-semibold">Comprar</button>
+              </div>
             )}
-            
           </div>
         </div>
       </div>
