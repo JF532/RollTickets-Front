@@ -14,7 +14,7 @@ export default function Card({ movie }) {
         <img
            src={movie.imageUrl}
           alt={movie.titulo}
-          className="rounded-t w-full"
+          className="rounded w-full"
         />
       )}
     >
