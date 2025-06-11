@@ -8,8 +8,10 @@ import { useParams } from "react-router-dom";
 
 export default function Compra() {
   const [filme, setFilme] = useState([null]);
-  const [assentosSelecionados, setAssentosSelecionados] = useState([]);
-  const [sessoes, setSessoes] = useState([]);
+  const [sessao, setSessao] = useState();
+  const [assento, setAssento] = useState([]);
+
+
   const { id } = useParams();
 
   const getFilme = () => {
@@ -23,24 +25,27 @@ export default function Compra() {
       });
   };
 
-  const getSessoes = () => {
+  const getSessao = () => {
     axios
       .get(`http://localhost:8080/api/sessoes/${id}`)
       .then((response) => {
-        setSessoes(response.data);
+        setSessao(response.data);
       })
       .catch((error) => {
-        console.error("Erro ao buscar sessões do backend", error);
+        console.error("Erro ao buscar as sessoes do backend", error);
       });
   };
+  
+ 
 
   useEffect(() => {
     //Com o useEffect só vai ser chamada uma vez
     getFilme();
-    getSessoes();
+    getSessao();
+
   }, []);
 
-  console.log(sessoes);
+
   return (
     <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <Navbar />
@@ -49,51 +54,16 @@ export default function Compra() {
         <CardCompra key={filme.id} movie={filme} />
 
         <div className=" mt-35 ml-120 flex">
-          <SeatPicker idSessao={id} onSelect={setAssentosSelecionados} />
+          <SeatPicker setAssento={setAssento}/> 
 
           <div className="mt-4 ml-25  text-white">
-            {assentosSelecionados.length > 0 && ( //Isso é só para que esse quadradinho apareça só quando clicarem em algo
-              <div className="flex flex-col">
-                <ul className="border-3 border-[#81318a] rounded p-6 bg-[#6321691e]">
-                  <h1 className="mb-3 text-[#793381] font-semibold">
-                    Ingressos Selecionados:{" "}
-                  </h1>
-                  {assentosSelecionados.map(
-                    (
-                      a //Faz um map dos assentos que eu selecionei
-                    ) => (
-                      <li className="text-gray-300" key={a.id}>
-                        Fileira{" "}
-                        <span className="text-[#b966c2]">
-                          {a.assento.fileira}
-                        </span>{" "}
-                        - Assento{" "}
-                        <span className="text-[#81318a]">
-                          {" "}
-                          {a.assento.numero}{" "}
-                        </span>
-                      </li>
-                    )
-                  )}
-                </ul>
 
-                <button className="text-white p-4 border-4 border-[#81318a] rounded mt-4 hover:bg-gray-800 cursor-pointer bg-[#6321691e] font-semibold">
-                  Comprar
-                </button>
-              </div>
-            )}
+
+          
+
           </div>
         </div>
-        <div>
-          {sessoes.map((sessao) => (
-            <button key={sessao.id} className="text-white">
-              {new Date(sessao.horario).toLocaleString("pt-BR", {
-                dateStyle: "short",
-                timeStyle: "short",
-              })}
-            </button>
-          ))}
-        </div>
+       
       </div>
 
       <Footer />
