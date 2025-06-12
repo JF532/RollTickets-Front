@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-export default function SeatPicker(props) {
-  const numero = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-  ];
+export default function SeatPicker({ capacidade, setAssento }) {
+  // Gera array com números de 1 até a capacidade da sala
+  const assentos = Array.from({ length: capacidade }, (_, i) => i + 1);
 
-  const [assentoSelecionado, setAssentoSelecionado] = useState([]);
+  const [assentosSelecionados, setAssentosSelecionados] = useState([]);
 
-  function handleClick(e) {
-    const numero = e.target.value;
-    setAssentoSelecionado((prev) =>
-      prev.includes(numero)
-        ? prev.filter((n) => n !== numero)
-        : [...prev, numero]
+  const handleClick = (num) => {
+    setAssentosSelecionados((prev) =>
+      prev.includes(num) ? prev.filter((n) => n !== num) : [...prev, num]
     );
-    props.setAssento(numero);
-  }
+    setAssento(num); // Se quiser passar só o último assento selecionado
+  };
 
   useEffect(() => {
-    console.log("Assentos selecionados:", assentoSelecionado);
-  }, [assentoSelecionado]);
+    console.log("Assentos Selecionados:", assentosSelecionados);
+  }, [assentosSelecionados]);
+
   return (
     <div className="max-w-md mx-auto p-4 bg-gray-900 rounded-md text-white grid grid-cols-5 gap-4">
-      {numero.map((num) => (
+      {assentos.map((num) => (
         <button
           key={num}
-          value={num}
-          onClick={handleClick}
+          type="button"
+          onClick={() => handleClick(num)}
           className={`border p-2 rounded ${
-            assentoSelecionado.includes(num.toString())
+            assentosSelecionados.includes(num)
               ? "bg-green-600"
-              : "bg-gray-800"
-          } hover:bg-green-700 transition`}
+              : "bg-gray-800 hover:bg-gray-700"
+          }`}
         >
           {num}
         </button>

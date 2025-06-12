@@ -5,65 +5,51 @@ import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 import SeatPicker from "../../Components/SeatPicker";
 import { useParams } from "react-router-dom";
+import Dropdown from "../../Components/Dropdown";
 
 export default function Compra() {
-  const [filme, setFilme] = useState([null]);
-  const [sessao, setSessao] = useState();
+  const [filme, setFilme] = useState(null);
+  const [sessoes, setSessoes] = useState([]);
+  const [sessaoSelecionada, setSessaoSelecionada] = useState(null);
   const [assento, setAssento] = useState([]);
-
 
   const { id } = useParams();
 
-  const getFilme = () => {
+  useEffect(() => {
     axios
       .get(`http://localhost:8080/api/filmes/${id}`)
-      .then((response) => {
-        setFilme(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar filmes do backend", error);
-      });
-  };
+      .then((response) => setFilme(response.data))
+      .catch((error) => console.error("Erro ao buscar filme", error));
 
-  const getSessao = () => {
     axios
-      .get(`http://localhost:8080/api/sessoes/${id}`)
-      .then((response) => {
-        setSessao(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar as sessoes do backend", error);
-      });
-  };
-  
- 
+      .get(`http://localhost:8080/api/sessoes/todas/${id}`)
+      .then((response) => setSessoes(response.data))
+      .catch((error) => console.error("Erro ao buscar sessões", error));
+  }, [id]);
 
-  useEffect(() => {
-    //Com o useEffect só vai ser chamada uma vez
-    getFilme();
-    getSessao();
-
-  }, []);
-
-
+  console.log(sessaoSelecionada);
   return (
     <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <Navbar />
 
-      <div className="flex ">
-        <CardCompra key={filme.id} movie={filme} />
+      <div className="flex p-6">
+        {filme && <CardCompra movie={filme} />}
 
-        <div className=" mt-35 ml-120 flex">
-          <SeatPicker setAssento={setAssento}/> 
-
-          <div className="mt-4 ml-25  text-white">
-
-
-          
-
-          </div>
+        <div className="mt-6 ml-6">
+          <Dropdown
+            sessoes={sessoes}
+            setSessaoSelecionada={setSessaoSelecionada}
+          />
         </div>
-       
+
+        <div className="mt-6 ml-6">
+          {sessaoSelecionada && (
+            <SeatPicker
+              setAssento={setAssento}
+              capacidade={sessaoSelecionada?.sala?.capacidade}
+            />
+          )}
+        </div>
       </div>
 
       <Footer />
