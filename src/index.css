@@ -81,5 +81,10 @@ button {
   display: none !important;
 }
 
+.Dropdown {
+  background-color: #81318a !important;
+}
 
-
+.DropdownItem:hover {
+  background-color: #672E74 !important;
+}

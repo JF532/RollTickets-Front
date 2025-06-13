@@ -1,9 +1,12 @@
 import { Dropdown as DropdownFlowbite, DropdownItem } from "flowbite-react";
 
-
 export default function Dropdown({ sessoes, setSessaoSelecionada }) {
   return (
-    <DropdownFlowbite label="Escolher Sessão" dismissOnClick={true} className="bg-[#81318a] text-white font-semibold cursor-pointer rounded-md hover:bg-[#8a53a0de] border-none focus:outline-none">
+    <DropdownFlowbite
+      label="Escolher Sessão"
+      dismissOnClick={true}
+      className="Dropdown text-white font-semibold cursor-pointer rounded-md border-none focus:outline-none"
+    >
       {sessoes && sessoes.length > 0 ? (
         sessoes.map((sessao) => (
           <DropdownItem
@@ -11,8 +14,7 @@ export default function Dropdown({ sessoes, setSessaoSelecionada }) {
             onClick={() => {
               setSessaoSelecionada(sessao);
             }}
-
-            className="bg-[#81318a] m text-white font-semibold border border-black cursor-pointer hover:bg-[#8a53a0de]"
+            className="DropdownItem m text-white font-semibold cursor-pointer"
           >
             Sala {sessao.sala.numero} -{" "}
             {new Date(sessao.horario).toLocaleTimeString([], {
