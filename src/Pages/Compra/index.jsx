@@ -8,17 +8,15 @@ import { useParams } from "react-router-dom";
 import Dropdown from "../../Components/Dropdown";
 
 export default function Compra() {
-  const [filme, setFilme] = useState(null);
-  const [sessoes, setSessoes] = useState([]);
+  const [filme, setFilme] = useState(null); //Guarda o filme selecionado
+  const [sessoes, setSessoes] = useState([]); //Guarda todas as sessões para aquele filme selecionado
   const [sessaoSelecionada, setSessaoSelecionada] = useState(null); //Objeto da sessão que foi escolhida pelo usuário
   const [assento, setAssento] = useState([]); //Array para guardar os assentos selecionados
   const [assentosReservados, setAssentosReservados] = useState([]); //Guarda quais assentos já foram reservados
 
-  const { id } = useParams();
+  const { id } = useParams(); //Pega o id da URL
 
-  
-
-  useEffect(() => {
+  useEffect(() => { //Busca os dados do filmes e das sessões, atualiza quando vc troca de filme ou sessão
     axios
       .get(`http://localhost:8080/api/filmes/${id}`)
       .then((response) => setFilme(response.data))
@@ -30,21 +28,27 @@ export default function Compra() {
       .catch((error) => console.error("Erro ao buscar sessões", error));
   }, [id]);
 
-  const buscarAssentosReservados = () => { //Função para buscar assentos reservados, ou seja, os assentos que estão no back
-    if (!sessaoSelecionada) return; //Só executa se uma sessão tiver sido executada
+  const buscarAssentosReservados = () => {
+    //Função para buscar assentos reservados, ou seja, os assentos que estão no back
+    if (!sessaoSelecionada) return; //Só executa se uma sessão tiver sido escolhida
 
     axios
-      .get(`http://localhost:8080/api/assentos/reservados/${sessaoSelecionada.id}`)
+      .get(
+        `http://localhost:8080/api/assentos/reservados/${sessaoSelecionada.id}`
+      )
       .then((response) => {
-        const ocupados = response.data.map((assento) => Number(assento.numero)); // Retorna do get os assentos que estão ocupados e atualizam o assentosReservados com esses valores
+        const ocupados = response.data.map((assento) => ({
+          numero: Number(assento.numero),
+          fileira: assento.fileira,
+        })); // Retorna do get os assentos que estão ocupados e atualizam o assentosReservados com esses valores(fileira e número)
         setAssentosReservados(ocupados);
       })
       .catch(() => setAssentosReservados([]));
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     buscarAssentosReservados();
-  }, [sessaoSelecionada]);
+  }, [sessaoSelecionada]); //Toda vez que a sessão mudar, ele chama a função para mostrar os assentos que estão reservados
 
   console.log(sessaoSelecionada);
   return (
@@ -69,6 +73,7 @@ export default function Compra() {
               assentosReservados={assentosReservados}
               sessaoSelecionada={sessaoSelecionada}
               atualizarAssentosReservados={buscarAssentosReservados}
+              filme={filme}
             />
           )}
         </div>
