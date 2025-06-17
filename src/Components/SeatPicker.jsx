@@ -13,7 +13,7 @@ export default function SeatPicker({
   // Gera array com números de 1 até a capacidade da sala
   const assentos = [];
 
-  const fileiras = ["A", "B", "C", "D", "E", "F", "G"];
+  const fileiras = ["A", "B", "C", "D", "E", "F", "G","H"];
   const capacidadePorFileira = 8;
 
   fileiras.forEach((fileira) => {

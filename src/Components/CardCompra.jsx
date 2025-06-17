@@ -37,12 +37,7 @@ export default function Card({ movie }) {
 
       <div className="pt-4">
        
-          <Link
-            to={`/compra/${movie.id}`}
-            className="block text-center w-full py-2 bg-[#81318a] text-[#c5b8bc] font-semibold rounded hover:bg-[#81318abd] transition"
-          >
-            Comprar
-          </Link>
+         
        
       </div>
     </CardFlowbite>
