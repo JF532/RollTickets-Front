@@ -10,10 +10,10 @@ export default function SeatPicker({
   atualizarAssentosReservados,
   filme
 }) {
-  // Gera array com números de 1 até a capacidade da sala
+  // Gera array com números de 1 até a capacidade das salas
   const assentos = [];
 
-  const fileiras = ["A", "B", "C", "D", "E", "F", "G"];
+  const fileiras = ["A", "B", "C", "D", "E", "F", "G","H"];
   const capacidadePorFileira = 8;
 
   fileiras.forEach((fileira) => {
