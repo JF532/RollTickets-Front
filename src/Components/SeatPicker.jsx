@@ -8,12 +8,12 @@ export default function SeatPicker({
   assentosReservados = [],
   sessaoSelecionada,
   atualizarAssentosReservados,
-  filme
+  filme,
 }) {
-  // Gera array com números de 1 até a capacidade das salas
+  // Gera array com números de 1 até a capacidade da sala
   const assentos = [];
 
-  const fileiras = ["A", "B", "C", "D", "E", "F", "G","H"];
+  const fileiras = ["A", "B", "C", "D", "E", "F", "G"];
   const capacidadePorFileira = 8;
 
   fileiras.forEach((fileira) => {
@@ -67,41 +67,67 @@ export default function SeatPicker({
         return;
       }
 
-      const payload = assentosSelecionados.map(({ numero, fileira }) => ({
+      const payloadAssentos = assentosSelecionados.map(({ numero, fileira }) => ({
         //Percorre assentosSelecionados e manda isso aqui de baixo para o back, no caso ele retorna uma lista de assentos
         numero: numero.toString(),
         fileira,
         salaId: sessaoSelecionada.sala.id,
         sessaoId: sessaoSelecionada.id,
       }));
-      console.log("Payload enviado:", payload);
+      console.log("Payload enviado:", payloadAssentos);
       console.log("clienteId:", clienteId);
       console.log("sessaoSelecionada:", sessaoSelecionada);
 
-      const response = await axios.post(
+      const responseAssentos = await axios.post(
         "http://localhost:8080/api/assentos/reservar",
-        payload
-      ); //Manda a lista(payload) para o back
-      const assentosSalvos = response.data;
+        payloadAssentos
+      );
 
-      await Promise.all(
-        //Para cada assento salvo, ele cadastra um ingresso no backend
-        assentosSalvos.map((assento) =>
+      const idsAssentos = responseAssentos.data.map((a) => a.id);
+
+      const respostasIngressos = await Promise.all(
+        idsAssentos.map((assentoId) =>
           axios.post("http://localhost:8080/api/ingressos/cadastrar", {
             tipo: tipoIngresso,
-            preco:preco,
+            preco,
             sessaoid: sessaoSelecionada.id,
-            assentoid: assento.id,
+            assentoid: assentoId,
             clienteid: clienteId,
-            incluiOculos: incluiOculos,
-            taxaExtra3D: taxaExtra3D,
+            incluiOculos,
+            taxaExtra3D,
           })
         )
       );
 
-      console.log("Payload enviado:", payload);
-      console.log("clienteId:", clienteId);
-      console.log("sessaoSelecionada:", sessaoSelecionada);
+      const idsIngressos = respostasIngressos.map((res) => res.data.id);
+      console.log("IDs válidos dos ingressos:", idsIngressos);
+
+      // Passo 1: Criar compra com os ingressos
+      const compraResponse = await axios.post(
+        "http://localhost:8080/api/compras/realizar",
+        {
+          cliente_id: clienteId,
+          ingressos_ids: idsIngressos,
+        }
+      );
+
+      const compraId = compraResponse.data.id;
+
+      // Passo 2: Criar pagamento vinculado à compra
+      const pagamentoResponse = await axios.post(
+        "http://localhost:8080/api/pagamentos/realizar",
+        {
+          compra_id: compraId,
+          metodoPagamento: "CREDITO",
+          status: "PENDENTE",
+        }
+      );
+
+      const pagamentoId = pagamentoResponse.data.id;
+
+      setMensagem("Reserva realizada com sucesso!");
+      setAssentosSelecionados([]);
+      atualizarAssentosReservados();
 
       setMensagem("Reserva realizada com sucesso!");
       setAssentosSelecionados([]); //Limpa os assentos selecionados
