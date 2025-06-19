@@ -102,9 +102,9 @@ export default function SeatPicker({
       const idsIngressos = respostasIngressos.map((res) => res.data.id);
       console.log("IDs válidos dos ingressos:", idsIngressos);
 
-      // Passo 1: Criar compra com os ingressos
+    
       const compraResponse = await axios.post(
-        "http://localhost:8080/api/compras/realizar",
+        "http://localhost:8080/api/compras/realizar", //Cria a compra com o ingresso
         {
           cliente_id: clienteId,
           ingressos_ids: idsIngressos,
@@ -113,13 +113,14 @@ export default function SeatPicker({
 
       const compraId = compraResponse.data.id;
 
-      // Passo 2: Criar pagamento vinculado à compra
+     
       const pagamentoResponse = await axios.post(
-        "http://localhost:8080/api/pagamentos/realizar",
+        "http://localhost:8080/api/pagamentos/realizar", //Cria o pagamento vinculado a conta
         {
           compra_id: compraId,
           metodoPagamento: "CREDITO",
           status: "PENDENTE",
+          dataHoraPagamento: new Date().toISOString(),
         }
       );
 
