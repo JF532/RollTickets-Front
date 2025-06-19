@@ -67,13 +67,15 @@ export default function SeatPicker({
         return;
       }
 
-      const payloadAssentos = assentosSelecionados.map(({ numero, fileira }) => ({
-        //Percorre assentosSelecionados e manda isso aqui de baixo para o back, no caso ele retorna uma lista de assentos
-        numero: numero.toString(),
-        fileira,
-        salaId: sessaoSelecionada.sala.id,
-        sessaoId: sessaoSelecionada.id,
-      }));
+      const payloadAssentos = assentosSelecionados.map(
+        ({ numero, fileira }) => ({
+          //Percorre assentosSelecionados e manda isso aqui de baixo para o back, no caso ele retorna uma lista de assentos
+          numero: numero.toString(),
+          fileira,
+          salaId: sessaoSelecionada.sala.id,
+          sessaoId: sessaoSelecionada.id,
+        })
+      );
       console.log("Payload enviado:", payloadAssentos);
       console.log("clienteId:", clienteId);
       console.log("sessaoSelecionada:", sessaoSelecionada);
@@ -102,9 +104,8 @@ export default function SeatPicker({
       const idsIngressos = respostasIngressos.map((res) => res.data.id);
       console.log("IDs válidos dos ingressos:", idsIngressos);
 
-      // Passo 1: Criar compra com os ingressos
       const compraResponse = await axios.post(
-        "http://localhost:8080/api/compras/realizar",
+        "http://localhost:8080/api/compras/realizar", //Cria a compra com o ingresso
         {
           cliente_id: clienteId,
           ingressos_ids: idsIngressos,
@@ -113,13 +114,13 @@ export default function SeatPicker({
 
       const compraId = compraResponse.data.id;
 
-      // Passo 2: Criar pagamento vinculado à compra
       const pagamentoResponse = await axios.post(
-        "http://localhost:8080/api/pagamentos/realizar",
+        "http://localhost:8080/api/pagamentos/realizar", //Cria o pagamento vinculado a conta
         {
           compra_id: compraId,
           metodoPagamento: "CREDITO",
           status: "PENDENTE",
+          dataHoraPagamento: new Date().toISOString(),
         }
       );
 
@@ -167,9 +168,17 @@ export default function SeatPicker({
         <div className="flex  items-center-safe">
           <div className="grid grid-cols-8 gap-4 mb-4">
             {assentos.map(({ numero, fileira }) => {
-              const ocupado = assentosReservados.some(
+              // Procura o assento no array com status
+              const assentoInfo = assentosReservados.find(
                 (a) => a.numero === numero && a.fileira === fileira
-              ); //Verifica se o assento está ocupado
+              );
+
+              const status = assentoInfo ? assentoInfo.status : "LIVRE";
+
+              // Define flags para facilitar leitura
+              const ocupado = status === "PAGO"; // Pago = vermelho, bloqueado
+              const pendente = status === "PENDENTE"; // Pendente = amarelo, bloqueado
+
               const selecionado = assentosSelecionados.some(
                 (a) => a.numero === numero && a.fileira === fileira
               ); //Verifica se o assento está selecionado
@@ -178,11 +187,13 @@ export default function SeatPicker({
                 <button
                   key={`${fileira}-${numero}`}
                   type="button"
-                  onClick={() => !ocupado && handleClick(numero, fileira)} //Só chama handleClick se o assento n estiver ocupado
-                  disabled={ocupado} //Se estiver ocupado desativa o botão
+                  onClick={() => !ocupado && !pendente && handleClick(numero, fileira)} //Só chama handleClick se o assento n estiver ocupado
+                  disabled={ocupado || pendente} //Se estiver ocupado desativa o botão
                   className={`w-14 h-14 text-xl flex items-center justify-center border-2 border-black p-2 rounded ${
                     ocupado
                       ? "bg-red-700 cursor-not-allowed" //Cor do botão se ele estiver ocupado
+                      : pendente
+                      ? "bg-yellow-500 cursor-not-allowed" //Cor do botão se ele estiver pendente
                       : selecionado
                       ? "bg-[#81318a]  cursor-pointer" //Cor do botão se ele for selecionado
                       : "bg-gray-800 hover:bg-gray-700  cursor-pointer" //Cor se ele estiver livre

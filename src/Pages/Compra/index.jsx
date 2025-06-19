@@ -34,12 +34,13 @@ export default function Compra() {
 
     axios
       .get(
-        `http://localhost:8080/api/assentos/reservados/${sessaoSelecionada.id}`
+        `http://localhost:8080/api/assentos/reservados_status/${sessaoSelecionada.id}`
       )
       .then((response) => {
         const ocupados = response.data.map((assento) => ({
           numero: Number(assento.numero),
           fileira: assento.fileira,
+          status:assento.statusPagamento,
         })); // Retorna do get os assentos que estão ocupados e atualizam o assentosReservados com esses valores(fileira e número)
         setAssentosReservados(ocupados);
       })
