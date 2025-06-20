@@ -55,7 +55,7 @@ export default function Swiper(props) {
             <SwiperSlide key={index}>
               {({ isActive }) =>
                 isActive ? (
-                  <a href="/meus-ingressos" className="inline-block">
+                  <a href={`/compra/${filme.id}`} className="inline-block">
                     <img
                       src={filme.imageUrl}
                       alt={`Filme ${index + 1}`}
