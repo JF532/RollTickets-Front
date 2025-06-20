@@ -33,6 +33,7 @@ export default function CompraMercadoPago() {
         publicKey="TEST-5efd8207-147e-439c-b6eb-c19c8e90b241"
         amount={valor}
         payerEmail={email}
+        compraId={compraId}
         onPaymentSuccess={(dados) => {
           fetch("http://localhost:8080/api/mercadopago/confirmar", {
             method: "POST",
@@ -41,11 +42,21 @@ export default function CompraMercadoPago() {
               paymentId: dados.id,
               compraId: compraId,
             }),
-          }).then(() => {
-            alert("Pagamento confirmado com sucesso!");
-            localStorage.removeItem("compraInfo"); // limpa dados salvos
-            navigate("/meus-ingressos");
-          });
+          })
+            .then((res) => res.json())
+            .then((resposta) => {
+              if (resposta.status === "approved") {
+                alert("✅ Pagamento confirmado com sucesso!");
+                localStorage.removeItem("compraInfo");
+                navigate("/meus-ingressos");
+              } else {
+                alert("⚠️ Pagamento não aprovado: " + resposta.message);
+              }
+            })
+            .catch((err) => {
+              console.error("Erro ao confirmar pagamento:", err);
+              alert("❌ Erro ao confirmar pagamento. Tente novamente.");
+            });
         }}
       />
       <Footer />

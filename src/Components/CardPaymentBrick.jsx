@@ -1,6 +1,13 @@
 import React, { useEffect, useRef } from "react";
 
-export default function CardPaymentBrick({ publicKey, amount = 100, payerEmail = "", onPaymentSuccess, onPaymentError }) {
+export default function CardPaymentBrick({
+  publicKey,
+  amount = 100,
+  payerEmail = "",
+  compraId,
+  onPaymentSuccess,
+  onPaymentError,
+}) {
   const brickContainerRef = useRef(null);
   const scriptRef = useRef(null);
 
@@ -28,17 +35,37 @@ export default function CardPaymentBrick({ publicKey, amount = 100, payerEmail =
           },
           onSubmit: (cardFormData) => {
             return new Promise((resolve, reject) => {
+              const payload = {
+                ...cardFormData,
+                compraId: compraId, // compraId vindo das props
+                transaction_amount: amount, // e não "valor"
+
+                payer: {
+                  ...cardFormData.payer,
+                  email: payerEmail,
+                },
+              };
+              console.log("Payload a ser enviado para o backend:", payload);
               fetch("http://localhost:8080/api/mercadopago/cartao", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(cardFormData),
+                body: JSON.stringify(payload),
               })
-                .then(res => res.json())
-                .then(data => {
+                .then((res) => {
+                  if (!res.ok) {
+                    throw new Error(
+                      `Erro na resposta do servidor: ${res.statusText}`
+                    );
+                  }
+                  return res.json();
+                })
+                .then((data) => {
+                  console.log("Resposta do backend:", data);
                   onPaymentSuccess?.(data);
                   resolve();
                 })
-                .catch(err => {
+                .catch((err) => {
+                  console.error("Erro no fetch:", err);
                   onPaymentError?.(err);
                   reject();
                 });
@@ -73,11 +100,20 @@ export default function CardPaymentBrick({ publicKey, amount = 100, payerEmail =
         brickContainerRef.current.innerHTML = "";
       }
     };
-  }, [publicKey, amount, payerEmail, onPaymentSuccess, onPaymentError]);
+  }, [
+    publicKey,
+    amount,
+    payerEmail,
+    compraId,
+    onPaymentSuccess,
+    onPaymentError,
+  ]);
 
   return (
     <div className="w-full max-w-lg mx-auto bg-gray-900 p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl text-white font-semibold mb-4">Pagamento com Cartão</h2>
+      <h2 className="text-2xl text-white font-semibold mb-4">
+        Pagamento com Cartão
+      </h2>
       <div id="cardPaymentBrick_container" ref={brickContainerRef} />
     </div>
   );
