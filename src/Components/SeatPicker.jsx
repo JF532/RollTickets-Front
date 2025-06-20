@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdOutlineEventSeat } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function SeatPicker({
   capacidade,
@@ -12,7 +13,7 @@ export default function SeatPicker({
 }) {
   // Gera array com números de 1 até a capacidade da sala
   const assentos = [];
-
+  const navigate = useNavigate();
   const fileiras = ["A", "B", "C", "D", "E", "F", "G"];
   const capacidadePorFileira = 8;
 
@@ -126,7 +127,22 @@ export default function SeatPicker({
 
       const pagamentoId = pagamentoResponse.data.id;
 
-      setMensagem("Reserva realizada com sucesso!");
+      localStorage.setItem(
+        "compraInfo",
+        JSON.stringify({
+          compraId: compraId,
+          valor: preco * assentosSelecionados.length,
+          email: clienteParseId.email || "teste@email.com",
+        })
+      );
+
+      navigate("/CompraMercadoPago", {
+        state: {
+          compraId: compraId,
+          valor: preco * assentosSelecionados.length,
+          email: clienteParseId.email || "teste@email.com", // ou outro campo que você tenha salvo
+        },
+      });
       setAssentosSelecionados([]);
       atualizarAssentosReservados();
 
@@ -187,7 +203,9 @@ export default function SeatPicker({
                 <button
                   key={`${fileira}-${numero}`}
                   type="button"
-                  onClick={() => !ocupado && !pendente && handleClick(numero, fileira)} //Só chama handleClick se o assento n estiver ocupado
+                  onClick={() =>
+                    !ocupado && !pendente && handleClick(numero, fileira)
+                  } //Só chama handleClick se o assento n estiver ocupado
                   disabled={ocupado || pendente} //Se estiver ocupado desativa o botão
                   className={`w-14 h-14 text-xl flex items-center justify-center border-2 border-black p-2 rounded ${
                     ocupado
