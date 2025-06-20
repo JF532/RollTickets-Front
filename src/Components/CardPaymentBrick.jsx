@@ -114,7 +114,7 @@ export default function CardPaymentBrick({
       <h2 className="text-2xl text-white font-semibold mb-4">
         Pagamento com Cartão
       </h2>
-      <div id="cardPaymentBrick_container" ref={brickContainerRef} />
+      <div id="cardPaymentBrick_container" ref={brickContainerRef} key={compraId} />
     </div>
   );
 }
