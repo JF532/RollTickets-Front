@@ -27,38 +27,40 @@ export default function CompraMercadoPago() {
   }
 
   return (
-    <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
-      <Navbar />
-      <CardPaymentBrick
-        publicKey="TEST-5efd8207-147e-439c-b6eb-c19c8e90b241"
-        amount={valor}
-        payerEmail={email}
-        compraId={compraId}
-        onPaymentSuccess={(dados) => {
-          fetch("http://localhost:8080/api/mercadopago/confirmar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              paymentId: dados.id,
-              compraId: compraId,
-            }),
-          })
-            .then((res) => res.json())
-            .then((resposta) => {
-              if (resposta.status === "approved") {
-                alert("✅ Pagamento confirmado com sucesso!");
-                localStorage.removeItem("compraInfo");
-                navigate("/meus-ingressos");
-              } else {
-                alert("⚠️ Pagamento não aprovado: " + resposta.message);
-              }
+    <div>
+      <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
+        <Navbar />
+        <CardPaymentBrick
+          publicKey="TEST-5efd8207-147e-439c-b6eb-c19c8e90b241"
+          amount={valor}
+          payerEmail={email}
+          compraId={compraId}
+          onPaymentSuccess={(dados) => {
+            fetch("http://localhost:8080/api/mercadopago/confirmar", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                paymentId: dados.id,
+                compraId: compraId,
+              }),
             })
-            .catch((err) => {
-              console.error("Erro ao confirmar pagamento:", err);
-              alert("❌ Erro ao confirmar pagamento. Tente novamente.");
-            });
-        }}
-      />
+              .then((res) => res.json())
+              .then((resposta) => {
+                if (resposta.status === "approved") {
+                  alert("✅ Pagamento confirmado com sucesso!");
+                  localStorage.removeItem("compraInfo");
+                  navigate("/meus-ingressos");
+                } else {
+                  alert("⚠️ Pagamento não aprovado: " + resposta.message);
+                }
+              })
+              .catch((err) => {
+                console.error("Erro ao confirmar pagamento:", err);
+                alert("❌ Erro ao confirmar pagamento. Tente novamente.");
+              });
+          }}
+        />
+      </div>
       <Footer />
     </div>
   );
