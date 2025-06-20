@@ -47,66 +47,84 @@ export default function MeusIngressos() {
   }, []);
 
   return (
-    <div className="w-auto min-h-screen bg-gray-900 ">
-      <NavBar />
-      <div className="overflow-x-auto mt-20 p-15 ">
-        <Table hoverable>
-          <TableHead>
-            <TableHeadCell className="rounded-tl-lg border-r-1 border-gray-500">
-              Filme
-            </TableHeadCell>
-            <TableHeadCell className="border-r-1 border-gray-500">
-              Sala
-            </TableHeadCell>
-            <TableHeadCell className="border-r-1 border-gray-500">
-              Data e Horário
-            </TableHeadCell>
-            <TableHeadCell className="border-r-1 border-gray-500">
-              Valor
-            </TableHeadCell>
-            <TableHeadCell className="border-r-1 border-gray-500">
-              Fileira/Assento
-            </TableHeadCell>
-            <TableHeadCell className="rounded-tr-lg ">
-              
-            </TableHeadCell>
-          </TableHead>
-          <TableBody className="divide-y ">
-            {ingressos.length === 0 && ( //Se não tiver ingressos vai mostar isso 
-              <TableRow>
-                <TableCell colSpan={5} className="text-center text-gray-400">
-                  Você não possui ingressos comprados.
-                </TableCell>
-              </TableRow>
-            )}
-            {ingressos.map((ingresso) => ( //Percorre todos os ingressos do cliente e cria uma linha para cada um
-              <TableRow key={ingresso.id} className="bg-gray-800 ">
-                <TableCell className="whitespace-nowrap font-medium text-white  border-r-1 border-gray-500 ">
-                  {ingresso.sessao.filme.titulo}
-                </TableCell>
-                <TableCell className="border-r-1 border-gray-500">
-                  {ingresso.sessao.sala.id}
-                </TableCell>
-                <TableCell className="border-r-1 border-gray-500">
-                  {formatarDataHora(ingresso.sessao.horario)}
-                </TableCell>
-                <TableCell className="border-r-1 border-gray-500">
-                  R$ {ingresso.preco.toFixed(2)}
-                </TableCell>
+    <div>
+      <div className="w-auto min-h-screen bg-gray-900 ">
+        <NavBar />
+        <div className="overflow-x-auto mt-20 p-15 ">
+          <Table hoverable>
+            <TableHead>
+              <TableHeadCell className="rounded-tl-lg border-r-1 border-gray-500">
+                Filme
+              </TableHeadCell>
+              <TableHeadCell className="border-r-1 border-gray-500">
+                Formato
+              </TableHeadCell>
+              <TableHeadCell className="border-r-1 border-gray-500">
+                Sala
+              </TableHeadCell>
+              <TableHeadCell className="border-r-1 border-gray-500">
+                Data e Horário
+              </TableHeadCell>
+              <TableHeadCell className="border-r-1 border-gray-500">
+                Valor
+              </TableHeadCell>
+              <TableHeadCell className="border-r-1 border-gray-500">
+                Fileira/Assento
+              </TableHeadCell>
+              <TableHeadCell className="rounded-tr-lg "></TableHeadCell>
+            </TableHead>
+            <TableBody className="divide-y ">
+              {ingressos.length === 0 && ( //Se não tiver ingressos vai mostar isso
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center text-gray-400">
+                    Você não possui ingressos comprados.
+                  </TableCell>
+                </TableRow>
+              )}
+              {ingressos.map((ingresso) => {
+                //Percorre todos os ingressos do cliente e cria uma linha para cada um
 
-                <TableCell className="border-r-1 border-gray-500 ">
-                  {ingresso.assento.fileira}
-                  {ingresso.assento.numero}
-                </TableCell>
-                <TableCell className="">
-                  {/* Aqui pode ter link para mostrar o QRCode, se tiver */}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+                return (
+                  <TableRow key={ingresso.id} className="bg-gray-800 ">
+                    <TableCell className="whitespace-nowrap font-medium text-white  border-r-1 border-gray-500 ">
+                      {ingresso.sessao.filme.titulo}
+                    </TableCell>
+                    <TableCell
+                      className={
+                        ingresso.sessao.filme.formato === "TRES_D"
+                          ? "text-purple-400 font-bold whitespace-nowrap border-r-1 border-gray-500"
+                          : "text-white font-semibold whitespace-nowrap border-r-1 border-gray-500"
+                      }
+                    >
+                      <span className="border flex p-2 border-[#1d2c8133] rounded-md bg-[#172b9bd5] justify-center">
+                        {ingresso.sessao.filme.formato === "TRES_D"
+                          ? "3D"
+                          : "2D"}
+                      </span>
+                    </TableCell>
+                    <TableCell className="border-r-1 border-gray-500">
+                      {ingresso.sessao.sala.id}
+                    </TableCell>
+                    <TableCell className="border-r-1 border-gray-500">
+                      {formatarDataHora(ingresso.sessao.horario)}
+                    </TableCell>
+                    <TableCell className="border-r-1 border-gray-500">
+                      R$ {ingresso.preco.toFixed(2)}
+                    </TableCell>
+                    <TableCell className="border-r-1 border-gray-500 ">
+                      {ingresso.assento.fileira}
+                      {ingresso.assento.numero}
+                    </TableCell>
+                    <TableCell className="">
+                      {/* Aqui pode ter link para mostrar o QRCode, se tiver */}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-
       <Footer />
     </div>
   );
