@@ -7,6 +7,7 @@ import FilmesHorarios from "./Pages/FilmesHorarios";
 import Login from "./Pages/Login"
 import MeusIngressos from "./Pages/MeusIngressos";
 import Compra from "./Pages/Compra"
+import CompraMercadoPago from "./Pages/CompraMercadoPago"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/meus-ingressos" element={<MeusIngressos/>} />
         <Route path="/compra/:id" element={<Compra />} />
+        <Route path="/CompraMercadoPago" element={<CompraMercadoPago />}/>
       </Routes>
     </Router>
   );
