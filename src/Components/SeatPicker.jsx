@@ -125,8 +125,6 @@ export default function SeatPicker({
         }
       );
 
-      const pagamentoId = pagamentoResponse.data.id;
-
       localStorage.setItem(
         "compraInfo",
         JSON.stringify({
@@ -136,13 +134,17 @@ export default function SeatPicker({
         })
       );
 
+      /* const pagamentoId = pagamentoResponse.data.id;
+
+      
+
       navigate("/CompraMercadoPago", {
         state: {
           compraId: compraId,
           valor: preco * assentosSelecionados.length,
           email: clienteParseId.email || "teste@email.com", // ou outro campo que você tenha salvo
         },
-      });
+      }); */
       setAssentosSelecionados([]);
       atualizarAssentosReservados();
 
