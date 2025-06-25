@@ -5,6 +5,7 @@ export default function CardPaymentBrick({
   amount = 100,
   payerEmail = "",
   compraId,
+  clienteId,
   onPaymentSuccess,
   onPaymentError,
 }) {
@@ -38,6 +39,7 @@ export default function CardPaymentBrick({
               const payload = {
                 ...cardFormData,
                 compraId: compraId, // compraId vindo das props
+                clienteId: clienteId,
                 transaction_amount: amount, // e não "valor"
 
                 payer: {
