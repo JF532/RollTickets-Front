@@ -7,6 +7,7 @@ import Footer from "../../Components/Footer";
 export default function CompraMercadoPago() {
   const navigate = useNavigate();
   const location = useLocation();
+  const cliente = JSON.parse(localStorage.getItem("clienteLogado"));
   let { compraId, valor, email } = location.state || {};
 
   if (!compraId || !valor || !email) {
@@ -35,6 +36,7 @@ export default function CompraMercadoPago() {
           amount={valor}
           payerEmail={email}
           compraId={compraId}
+          clienteId={cliente.id}
           onPaymentSuccess={(dados) => {
             fetch("http://localhost:8080/api/mercadopago/confirmar", {
               method: "POST",
@@ -42,6 +44,7 @@ export default function CompraMercadoPago() {
               body: JSON.stringify({
                 paymentId: dados.id,
                 compraId: compraId,
+                clienteId: cliente?.id,
               }),
             })
               .then((res) => res.json())

@@ -8,6 +8,7 @@ import Login from "./Pages/Login"
 import MeusIngressos from "./Pages/MeusIngressos";
 import Compra from "./Pages/Compra"
 import CompraMercadoPago from "./Pages/CompraMercadoPago"
+import Cart from "./Components/Cart";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/meus-ingressos" element={<MeusIngressos/>} />
         <Route path="/compra/:id" element={<Compra />} />
         <Route path="/CompraMercadoPago" element={<CompraMercadoPago />}/>
+        <Route path="/carrinho" element={<Cart />} />
       </Routes>
     </Router>
   );
