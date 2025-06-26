@@ -3,16 +3,35 @@ import { IoSearch } from "react-icons/io5";
 import { IoTicketOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Menu from "./Menu";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Navbar() {
   const [logado, setLogado] = useState(false);
   const [mostrarMenu, setMostrarMenu] = useState(false);
-
+  const navigate = useNavigate();
+  const [qtdCarrinho, setQtdCarrinho] = useState(0);
+  
   useEffect(() => {
-    const cliente = localStorage.getItem("clienteLogado");
-    if (cliente) setLogado(true);
+    const clienteRaw = localStorage.getItem("clienteLogado");
+    const cliente = clienteRaw ? JSON.parse(clienteRaw) : null; //Serve para vc pegar o objeto "Cliente" todo, para que você consiga pegar o id dele posteriomente
+
+    if (cliente && cliente.id) {
+      setLogado(true);
+
+      axios
+        .get(`http://localhost:8080/api/ingressos/pendentes/${cliente.id}`)
+        .then((res) => setQtdCarrinho(res.data.length))
+        .catch((err) =>
+          console.error("Erro ao buscar ingressos pendentes:", err)
+        );
+    }
   }, []);
 
+  const handleGoToCart = () => {
+    navigate("/carrinho");
+  };
   return (
     <div>
       <nav className="flex w-full h-20 bg-[#81318a] items-center px-6 justify-between text-white">
@@ -57,7 +76,14 @@ export default function Navbar() {
             hover:border-purple-500/30 focus:bg-white hover:bg-white focus:outline-none focus-visible:outline-none"
             />
           </div>
-
+          <div className="relative transition delay-100 duration-300 ease-in cursor-pointer" onClick={handleGoToCart}>
+            <AiOutlineShoppingCart size={32} color="white" />
+            {qtdCarrinho > 0 && (
+              <span className="absolute -top-2 -right-2 bg-[#b966c2] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md">
+                {qtdCarrinho}
+              </span>
+            )}
+          </div>
 
           {!logado && (
             <li>
@@ -93,6 +119,6 @@ export default function Navbar() {
         </ul>
       </nav>
       {logado && mostrarMenu && <Menu onClose={() => setMostrarMenu(false)} />}
-    </div >
+    </div>
   );
 }
