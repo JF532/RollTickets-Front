@@ -49,7 +49,7 @@ export default function SeatPicker({
     );
   };
 
-  const confirmarReserva = async () => {
+  const adicionarCarrinho = async () => {
     setCarregando(true);
     try {
       const clienteInteiro = localStorage.getItem("clienteLogado"); //Id do cliente que está logado
@@ -231,19 +231,6 @@ export default function SeatPicker({
           {assentosSelecionados.length > 0 && (
             <div className=" ml-40 border-2 border-[#81318a] rounded p-10">
               <ul className="">
-                <h1 className="mb-3 text-[#793381] font-semibold">
-                  Ingressos Selecionados:
-                  {/* 
-                  <p className="mt-4 text-white">
-                    Total:{" "}
-                    <span className="text-[#b966c2]">
-                      R$ {assentosSelecionados.length * 28.5}
-                    </span>
-                  </p>
-                  <small className="text-gray-400">
-                    (25,00 + 3,50 por ingresso 3D)
-                  </small> */}
-                </h1>
                 {assentosSelecionados.map((a) => (
                   <li
                     className="text-gray-300"
@@ -256,10 +243,10 @@ export default function SeatPicker({
               </ul>
               <button
                 disabled={carregando}
-                onClick={confirmarReserva}
+                onClick={adicionarCarrinho}
                 className="w-full  bg-[#81318a] hover:bg-[#b966c2] text-white mt-6 py-2 px-4 rounded cursor-pointer"
               >
-                {carregando ? "Reservando..." : "Confirmar Reserva"}
+                {carregando ? "Reservando..." : "Adicionar no carrinho"}
               </button>
             </div>
           )}

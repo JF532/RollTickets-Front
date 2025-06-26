@@ -50,7 +50,7 @@ export default function MeusIngressos() {
     <div>
       <div className="w-auto min-h-screen bg-gray-900 ">
         <NavBar />
-        <div className="overflow-x-auto mt-20 p-15 ">
+        <div className=" flex justify-center items-center overflow-x-auto mt-20 p-15 ">
           <Table hoverable>
             <TableHead>
               <TableHeadCell className="rounded-tl-lg border-r-1 border-gray-500">
@@ -68,10 +68,10 @@ export default function MeusIngressos() {
               <TableHeadCell className="border-r-1 border-gray-500">
                 Valor
               </TableHeadCell>
-              <TableHeadCell className="border-r-1 border-gray-500">
+              <TableHeadCell className=" rounded-tr-lg border-gray-500">
                 Fileira/Assento
               </TableHeadCell>
-              <TableHeadCell className="rounded-tr-lg "></TableHeadCell>
+           
             </TableHead>
             <TableBody className="divide-y ">
               {ingressos.length === 0 && ( //Se não tiver ingressos vai mostar isso
@@ -90,17 +90,16 @@ export default function MeusIngressos() {
                       {ingresso.sessao.filme.titulo}
                     </TableCell>
                     <TableCell
+                      className="text-purple-400 font-bold whitespace-nowrap border-r-1 border-gray-500">
+                       <span
                       className={
                         ingresso.sessao.filme.formato === "TRES_D"
-                          ? "text-purple-400 font-bold whitespace-nowrap border-r-1 border-gray-500"
-                          : "text-white font-semibold whitespace-nowrap border-r-1 border-gray-500"
+                          ? "text-white font-semibold whitespace-nowrap   border-r-1 flex p-2 border-[#00000033] rounded-md bg-[#b61919d5] justify-center"
+                          : "text-white font-semibold whitespace-nowrap   border-r-1 flex p-2 border-[#1d2c8133] rounded-md bg-[#172b9bd5] justify-center"
                       }
                     >
-                      <span className="border flex p-2 border-[#1d2c8133] rounded-md bg-[#172b9bd5] justify-center">
-                        {ingresso.sessao.filme.formato === "TRES_D"
-                          ? "3D"
-                          : "2D"}
-                      </span>
+                      {ingresso.sessao.filme.formato === "TRES_D" ? "3D" : "2D"}
+                    </span>
                     </TableCell>
                     <TableCell className="border-r-1 border-gray-500">
                       {ingresso.sessao.sala.id}
@@ -111,13 +110,11 @@ export default function MeusIngressos() {
                     <TableCell className="border-r-1 border-gray-500">
                       R$ {ingresso.preco.toFixed(2)}
                     </TableCell>
-                    <TableCell className="border-r-1 border-gray-500 ">
+                    <TableCell className=" border-gray-500 ">
                       {ingresso.assento.fileira}
                       {ingresso.assento.numero}
                     </TableCell>
-                    <TableCell className="">
-                      {/* Aqui pode ter link para mostrar o QRCode, se tiver */}
-                    </TableCell>
+    
                   </TableRow>
                 );
               })}

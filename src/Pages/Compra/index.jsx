@@ -6,11 +6,9 @@ import Footer from "../../Components/Footer";
 import SeatPicker from "../../Components/SeatPicker";
 import { useParams } from "react-router-dom";
 import Dropdown from "../../Components/Dropdown";
-import { AiOutlineShoppingCart } from "react-icons/ai"; // Importing a shopping cart icon (from react-icons)
-import { useNavigate } from "react-router-dom";
+
 
 export default function Compra() {
-  const navigate = useNavigate();
 
   const [filme, setFilme] = useState(null); //Guarda o filme selecionado
   const [sessoes, setSessoes] = useState([]); //Guarda todas as sessões para aquele filme selecionado
@@ -56,20 +54,13 @@ export default function Compra() {
     buscarAssentosReservados();
   }, [sessaoSelecionada]); //Toda vez que a sessão mudar, ele chama a função para mostrar os assentos que estão reservados
 
-  const handleGoToCart = () => {
-    navigate("/carrinho");
-  };
+
 
   console.log(sessaoSelecionada);
   return (
     <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
       <Navbar />
-      <div
-        className="fixed top-30 right-4 z-50 cursor-pointer"
-        onClick={handleGoToCart}
-      >
-        <AiOutlineShoppingCart size={32} color="#81318a" />
-      </div>
+   
 
       <div className="flex p-6">
         {filme && <CardCompra movie={filme} />}
