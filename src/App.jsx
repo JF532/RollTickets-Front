@@ -9,6 +9,7 @@ import MeusIngressos from "./Pages/MeusIngressos";
 import Compra from "./Pages/Compra"
 import CompraMercadoPago from "./Pages/CompraMercadoPago"
 import Cart from "./Components/Cart";
+import AtualizarConta from "./Pages/AtualizarConta";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/compra/:id" element={<Compra />} />
         <Route path="/CompraMercadoPago" element={<CompraMercadoPago />}/>
         <Route path="/carrinho" element={<Cart />} />
+        <Route path="/minha-conta" element={<AtualizarConta/>}/>
       </Routes>
     </Router>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { criarUsuario } from "../../Controllers/api";
 
-function UserForm() {
+function UserForm(props) {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -72,7 +72,7 @@ function UserForm() {
           />
         </div>
 
-        <div className="mb-4">
+        {props.name !== "atualizar-conta" && <div className="mb-4">
           <label className="block text-white mb-1">CPF:</label>
           <input
             type="text"
@@ -82,7 +82,8 @@ function UserForm() {
             required
             className="w-full px-3 py-2 rounded-md bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-        </div>
+        </div>}
+        
 
         <div className="mb-6">
           <label className="block text-white mb-1">Telefone:</label>
@@ -97,25 +98,39 @@ function UserForm() {
         </div>
 
         <div className="flex justify-center">
-          <button
-            type="submit"
-            className="px-6 py-2 bg-[#81318a] text-white font-semibold rounded-lg hover:bg-purple-700 transition"
-          >
-            Cadastrar
-          </button>
+          {props.name === "atualizar-conta" ? (
+            <button
+            type="button"
+              onClick={() => {
+                props.onUpdateAccount(formData)
+              }}
+              className="px-6 py-2 bg-[#81318a] text-white font-semibold rounded-lg hover:bg-purple-700 transition cursor-pointer"
+            >
+              Atualizar Conta
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="px-6 py-2 bg-[#81318a] text-white font-semibold rounded-lg hover:bg-purple-700 transition cursor-pointer" 
+            >
+              Cadastrar
+            </button>
+          )}
         </div>
 
-        <div className="flex justify-center">
-          <label className="mt-10 text-white flex gap-2" htmlFor="">
-            Tem conta ?
-            <a
-              className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 "
-              href="/login"
-            >
-              Entrar
-            </a>
-          </label>
-        </div>
+        {props.name !== "atualizar-conta" && (
+          <div className="flex justify-center">
+            <label className="mt-10 text-white flex gap-2" htmlFor="">
+              Tem conta ?
+              <a
+                className="hover:text-black transition delay-100 duration-300 ease-in underline decoration-1 "
+                href="/login"
+              >
+                Entrar
+              </a>
+            </label>
+          </div>
+        )}
       </form>
     </div>
   );

@@ -7,6 +7,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { LuTicket } from "react-icons/lu";
 import { CiLogout } from "react-icons/ci";
+import { RiAccountBox2Line } from "react-icons/ri"
 
 export default function Menu({ onClose }) {
   const [cliente, setCliente] = useState(null);
@@ -45,6 +46,11 @@ export default function Menu({ onClose }) {
               Meus Ingressos
             </SidebarItem>
 
+            <SidebarItem icon={RiAccountBox2Line}
+            href="/minha-conta">
+              Atualizar Conta
+            </SidebarItem>
+
             <SidebarItem
               onClick={handleLogout}
               icon={CiLogout}
@@ -52,6 +58,7 @@ export default function Menu({ onClose }) {
             >
               Sair
             </SidebarItem>
+
           </SidebarItemGroup>
         </SidebarItems>
       </Sidebar>
