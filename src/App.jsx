@@ -10,6 +10,7 @@ import Compra from "./Pages/Compra"
 import CompraMercadoPago from "./Pages/CompraMercadoPago"
 import Cart from "./Components/Cart";
 import AtualizarConta from "./Pages/AtualizarConta";
+import FilmesPesquisados from "./Pages/FilmesPesquisados";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/CompraMercadoPago" element={<CompraMercadoPago />}/>
         <Route path="/carrinho" element={<Cart />} />
         <Route path="/minha-conta" element={<AtualizarConta/>}/>
+        <Route path="/filmes/:titulo" element={<FilmesPesquisados />} />
       </Routes>
     </Router>
   );

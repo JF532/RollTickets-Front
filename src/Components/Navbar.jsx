@@ -12,7 +12,8 @@ export default function Navbar() {
   const [mostrarMenu, setMostrarMenu] = useState(false);
   const navigate = useNavigate();
   const [qtdCarrinho, setQtdCarrinho] = useState(0);
-  
+  const [filmePesquisado, setFilmePesquisado] = useState("");
+
   useEffect(() => {
     const clienteRaw = localStorage.getItem("clienteLogado");
     const cliente = clienteRaw ? JSON.parse(clienteRaw) : null; //Serve para vc pegar o objeto "Cliente" todo, para que você consiga pegar o id dele posteriomente
@@ -32,6 +33,24 @@ export default function Navbar() {
   const handleGoToCart = () => {
     navigate("/carrinho");
   };
+
+  const navigateToSearch = () => {// fiz isso aqui só para caso a pessoa quiera clicar no icone de lupa para fazer a pesquisa
+    const query = filmePesquisado.trim();
+    if (query !== "") {
+      navigate(`/filmes/${encodeURIComponent(query)}`);
+    }
+  };
+
+  function handleChange(e) {
+    setFilmePesquisado(e.target.value);
+  }
+
+  function handleKeyDown(e) {
+     if (e.key === "Enter") {
+      navigateToSearch();
+    }
+  }
+
   return (
     <div>
       <nav className="flex w-full h-20 bg-[#81318a] items-center px-6 justify-between text-white">
@@ -65,7 +84,7 @@ export default function Navbar() {
 
         <ul className="flex items-center gap-6">
           <div className="flex items-center relative max-w-[190px]">
-            <IoSearch className="absolute left-4 text-gray-400 w-4 h-4" />
+            <IoSearch className="absolute left-4 text-gray-400 w-4 h-4 cursor-pointer" onClick={navigateToSearch}/>
             <input
               type="text"
               placeholder="Pesquisar filme"
@@ -73,10 +92,16 @@ export default function Navbar() {
             bg-[#f3f3f4] text-[#0d0c22] placeholder-[#9e9ea7]
             transition duration-300 ease-in-out
             focus:outline-none focus:ring-2 focus:ring-purple-500/40
-            hover:border-purple-500/30 focus:bg-white hover:bg-white focus:outline-none focus-visible:outline-none"
+            hover:border-purple-500/30 focus:bg-white hover:bg-white focus-visible:outline-none"
+              value={filmePesquisado}
+              onChange={handleChange}
+              onKeyDown={handleKeyDown}
             />
           </div>
-          <div className="relative transition delay-100 duration-300 ease-in cursor-pointer" onClick={handleGoToCart}>
+          <div
+            className="relative transition delay-100 duration-300 ease-in cursor-pointer"
+            onClick={handleGoToCart}
+          >
             <AiOutlineShoppingCart size={32} color="white" />
             {qtdCarrinho > 0 && (
               <span className="absolute -top-2 -right-2 bg-[#b966c2] text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md">
