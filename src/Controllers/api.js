@@ -17,3 +17,19 @@ export function buscarFilmesPorTitulo(titulo) {
     params: { titulo },
   });
 }
+
+export function buscarTodosOsFilmes() {
+  return axios.get("http://localhost:8080/api/filmes");
+}
+
+export function buscarTodasAsSalas() {
+  return axios.get("http://localhost:8080/api/salas");
+}
+
+export function buscarTodasAsSessoes() {
+  return axios.get("http://localhost:8080/api/sessoes");
+}
+
+export function criarSessao(payload) {
+  return axios.post("http://localhost:8080/api/sessoes/cadastrar", payload);
+}
