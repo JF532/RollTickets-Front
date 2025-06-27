@@ -7,18 +7,21 @@ import {
 import React, { useEffect, useState } from "react";
 import { LuTicket } from "react-icons/lu";
 import { CiLogout } from "react-icons/ci";
-import { RiAccountBox2Line } from "react-icons/ri"
+import { RiAccountBox2Line } from "react-icons/ri";
 
 export default function Menu({ onClose }) {
   const [cliente, setCliente] = useState(null);
-
   useEffect(() => {
     const dados = localStorage.getItem("clienteLogado");
+    console.log(dados);
     if (dados) {
       setCliente(JSON.parse(dados));
     }
+
   }, []);
 
+
+  
   function handleLogout() {
     localStorage.removeItem("clienteLogado");
     window.location.href = "/";
@@ -46,10 +49,16 @@ export default function Menu({ onClose }) {
               Meus Ingressos
             </SidebarItem>
 
-            <SidebarItem icon={RiAccountBox2Line}
-            href="/minha-conta">
+            <SidebarItem icon={RiAccountBox2Line} href="/minha-conta">
               Atualizar Conta
             </SidebarItem>
+
+
+             { cliente?.role === "ADMIN" && 
+              <SidebarItem icon={RiAccountBox2Line} href="/minha-conta">
+                Criar Sessão
+              </SidebarItem>
+            } 
 
             <SidebarItem
               onClick={handleLogout}
@@ -58,7 +67,6 @@ export default function Menu({ onClose }) {
             >
               Sair
             </SidebarItem>
-
           </SidebarItemGroup>
         </SidebarItems>
       </Sidebar>

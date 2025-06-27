@@ -7,9 +7,7 @@ import SeatPicker from "../../Components/SeatPicker";
 import { useParams } from "react-router-dom";
 import Dropdown from "../../Components/Dropdown";
 
-
 export default function Compra() {
-
   const [filme, setFilme] = useState(null); //Guarda o filme selecionado
   const [sessoes, setSessoes] = useState([]); //Guarda todas as sessões para aquele filme selecionado
   const [sessaoSelecionada, setSessaoSelecionada] = useState(null); //Objeto da sessão que foi escolhida pelo usuário
@@ -54,35 +52,34 @@ export default function Compra() {
     buscarAssentosReservados();
   }, [sessaoSelecionada]); //Toda vez que a sessão mudar, ele chama a função para mostrar os assentos que estão reservados
 
-
-
   console.log(sessaoSelecionada);
   return (
-    <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
-      <Navbar />
-   
+    <div>
+      <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
+        <Navbar />
+    
+        <div className="flex p-6">
+          {filme && <CardCompra movie={filme} />}
 
-      <div className="flex p-6">
-        {filme && <CardCompra movie={filme} />}
-
-        <div className="mt-6 ml-6">
-          <Dropdown
-            sessoes={sessoes}
-            setSessaoSelecionada={setSessaoSelecionada}
-          />
-        </div>
-
-        <div className="mt-6 ml-6">
-          {sessaoSelecionada && (
-            <SeatPicker
-              setAssento={setAssento}
-              capacidade={sessaoSelecionada?.sala?.capacidade}
-              assentosReservados={assentosReservados}
-              sessaoSelecionada={sessaoSelecionada}
-              atualizarAssentosReservados={buscarAssentosReservados}
-              filme={filme}
+          <div className="mt-6 ml-6">
+            <Dropdown
+              sessoes={sessoes}
+              setSessaoSelecionada={setSessaoSelecionada}
             />
-          )}
+          </div>
+
+          <div className="mt-6 ml-6">
+            {sessaoSelecionada && (
+              <SeatPicker
+                setAssento={setAssento}
+                capacidade={sessaoSelecionada?.sala?.capacidade}
+                assentosReservados={assentosReservados}
+                sessaoSelecionada={sessaoSelecionada}
+                atualizarAssentosReservados={buscarAssentosReservados}
+                filme={filme}
+              />
+            )}
+          </div>
         </div>
       </div>
 

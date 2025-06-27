@@ -5,6 +5,7 @@ import Swiper from "../../Components/Swiper";
 import NavBar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 
+
 function Home() {
   return (
     <div className="w-auto min-h-screen bg-gray-900 overflow-x-hidden">
