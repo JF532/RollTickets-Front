@@ -17,11 +17,8 @@ export default function Menu({ onClose }) {
     if (dados) {
       setCliente(JSON.parse(dados));
     }
-
   }, []);
 
-
-  
   function handleLogout() {
     localStorage.removeItem("clienteLogado");
     window.location.href = "/";
@@ -53,12 +50,11 @@ export default function Menu({ onClose }) {
               Atualizar Conta
             </SidebarItem>
 
-
-             { cliente?.role === "ADMIN" && 
-              <SidebarItem icon={RiAccountBox2Line} href="/minha-conta">
+            {cliente?.role === "ADMIN" && (
+              <SidebarItem icon={RiAccountBox2Line} href="/criar-sessao">
                 Criar Sessão
               </SidebarItem>
-            } 
+            )}
 
             <SidebarItem
               onClick={handleLogout}
