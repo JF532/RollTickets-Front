@@ -10,7 +10,7 @@ export default function FilmesHorarios() {
         <Navbar />
         <Grid
           url="http://localhost:8080/api/filmes"
-          header="Em cartaz"
+          header="Em Cartaz"
           name="FilmesHorarios"
         />
       </div>
