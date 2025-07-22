@@ -107,7 +107,7 @@ A aplicação estará disponível em:
 
 ## 📌 Observações
 
-- Este repositório representa **apenas o frontend**. A API REST (backend Spring Boot) está em outro repositório: [`RollTickets-API`](https://github.com/JF532/RollTickets-API)
+- Este repositório representa **apenas o frontend**. A API REST (backend Spring Boot) está em outro repositório: [`RollTickets-API`](https://github.com/Feliipee013/RollTickets-api.git)
 - A integração com a [TMDB API](https://www.themoviedb.org/) é utilizada para exibir dados de filmes reais.
 - O frontend também se comunica com o backend para efetuar compras, listar sessões, assentos e gerenciar clientes.
 
